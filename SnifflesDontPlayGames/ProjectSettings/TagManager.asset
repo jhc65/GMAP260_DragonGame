@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - fire
-  - wind
-  - door
-  - rift
-  - enemy
-  - not door
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX

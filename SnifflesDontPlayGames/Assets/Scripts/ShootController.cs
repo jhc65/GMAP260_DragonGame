@@ -39,7 +39,7 @@ public class ShootController : MonoBehaviour {
 			}
 
 			bullet.SetActive(true);
-			bullet.transform.rotation = transform.rotation;
+			bullet.transform.rotation = Quaternion.identity;
 			currentBullet = bullet;
 
 			// Shoot in direction player is trying to face

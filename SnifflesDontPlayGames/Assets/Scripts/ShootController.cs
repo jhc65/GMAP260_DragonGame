@@ -6,13 +6,19 @@ public class ShootController : MonoBehaviour {
 
 	public GameObject bulletPrefab;
 
+
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
 	private int next;
 	private float bulletVelocity = 20.0f;
 	private GameObject currentBullet;
 	private float bulletSpawnOffset = 0.5f;
-	public bool canShoot = true;
+	private bool canShoot = true;
+
+	public void DisableShooting()
+	{
+		canShoot = false;
+	}
 
 	// Init array of bullets
 	void Start () {
@@ -20,7 +26,10 @@ public class ShootController : MonoBehaviour {
 			bullets[i] = (GameObject)Instantiate(bulletPrefab);
 			bullets[i].SetActive(false);
 		}
-		next = 0;
+		if (next >= bullets.Length) {
+			next = 0;
+		}
+
 	}
 
 	// Update is called once per frame

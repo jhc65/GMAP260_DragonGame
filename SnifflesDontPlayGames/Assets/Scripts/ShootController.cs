@@ -26,7 +26,10 @@ public class ShootController : MonoBehaviour {
 			bullets[i] = (GameObject)Instantiate(bulletPrefab);
 			bullets[i].SetActive(false);
 		}
-		next = 0;
+		if (next >= bullets.Length) {
+			next = 0;
+		}
+
 	}
 
 	// Update is called once per frame

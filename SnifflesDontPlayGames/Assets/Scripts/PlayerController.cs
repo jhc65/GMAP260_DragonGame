@@ -30,8 +30,7 @@ public class PlayerController : MonoBehaviour {
 		}
     }
 
-	void OnCollisionEnter(Collision collision) 
-	{
+	void OnCollisionEnter(Collision collision) {
 		if (collision.collider.tag == "Enemy") {
 			hp--;
 			if (hp <= 0) { 

@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 			if (hp <= 0) { 
 				canMove = false;
 				ShootController sc = GetComponent<ShootController>();
-				sc.canShoot = false;
+				sc.DisableShooting();
 				GameObject text = GameObject.Find("Game Over Text");
 				text.GetComponent<Text>().enabled = true;
 			}

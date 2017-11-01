@@ -6,7 +6,7 @@ public class MoveTowardsPlayer : MonoBehaviour {
 
     private Transform target;
     public float speed = 5f;
-	private int hp = 2;
+	private int hp = 3;
 	private Color hitColor = new Color(255f,255f,255f);
 		
     void Start () {
@@ -21,7 +21,7 @@ public class MoveTowardsPlayer : MonoBehaviour {
 		if (collision.collider.tag == "Projectile") {
 			
 			// Remove bullet
-			Destroy(collision.collider.gameObject);
+			collision.collider.gameObject.SetActive(false);
 
 			hp--;
 			GetComponent<Renderer>().material.color = hitColor; // Effect to show enemy was hit. Change color to white

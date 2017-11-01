@@ -12,7 +12,7 @@ public class ShootController : MonoBehaviour {
 	private float bulletVelocity = 20.0f;
 	private GameObject currentBullet;
 	private float bulletSpawnOffset = 0.5f;
-	public bool canShoot = true;
+	private bool canShoot = true;
 
 	// Init array of bullets
 	void Start () {
@@ -30,12 +30,7 @@ public class ShootController : MonoBehaviour {
 			
 			GameObject bullet = bullets[next++];
 			if (next >= bullets.Length) {
-	
-				// Delete old bullets and re-instantiate
-				for (int i = 0; i < bullets.Length; i++)
-					Destroy(bullets[i]);
-
-				Start();
+				next = 0;
 			}
 
 			bullet.SetActive(true);
@@ -73,5 +68,13 @@ public class ShootController : MonoBehaviour {
 	void ShootRight() {
 		currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffset, transform.position.y, transform.position.z);
 		currentBullet.GetComponent<Rigidbody>().velocity = new Vector3(bulletVelocity, 0f, 0f);
+	}
+
+	public void DisableShooting() {
+		canShoot = false;
+	}
+
+	public void EnableShooting() {
+		canShoot = true;
 	}
 }

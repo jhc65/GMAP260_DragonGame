@@ -15,12 +15,16 @@ public class EnemySpawner : MonoBehaviour {
 	public float frequency = 5.0F;
 
 	private float spawnCooldown = 0.0f;
+	private bool enabled = true;
 
 	void Start () {
 		
 	}
 	
 	void Update () {
+		if (!enabled)
+			return;
+		
 		if (spawnCooldown <= 0.0f && spawnPoints.Length > 0) {
 			int i = Random.Range(0, spawnPoints.Length); // random spawn point
 			Vector3 spawnPosition = spawnPoints[i];
@@ -31,5 +35,13 @@ public class EnemySpawner : MonoBehaviour {
 		else {
 			spawnCooldown -= Time.deltaTime;
 		}
+	}
+
+	public void Enable() {
+		enabled = true;
+	}
+
+	public void Disable() {
+		enabled = false; 
 	}
 }

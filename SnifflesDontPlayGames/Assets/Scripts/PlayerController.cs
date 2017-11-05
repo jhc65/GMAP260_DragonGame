@@ -9,22 +9,49 @@ public class PlayerController : MonoBehaviour {
     private int maxHealth = 5;
 	private int hp = 5;
 	private bool canMove = true;
+	private FacingDir currentDir;
+
 
     public GameObject gameOverText;
-    public GameObject victoryText;
-
+	public GameObject victoryText;
     public Text playerhealthUI;
 
 	void Start () {
         playerhealthUI.text = hp.ToString();
+		currentDir = new FacingDir("left");
     }
+
+	void FlipHorizontal(FacingDir toDir) {
+		if (currentDir == null || toDir.Equals(currentDir))
+			return;
+
+		// Switch the way the player is labelled as facing
+		currentDir.Flip();
+
+		// Multiply the player's x local scale by -1
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 
 	void FixedUpdate () {
 		if (!canMove)
 			return;
 
-        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        GetComponent<Rigidbody>().velocity = targetVelocity * playerSpeed;
+
+		float horiz = Input.GetAxis("Horizontal");
+		float vert = Input.GetAxis("Vertical");
+		print("horiz = " + horiz);
+		print("vert = " + vert);
+        Vector3 targetVelocity = new Vector3(horiz, vert);
+		if (horiz <= 0) {
+			FlipHorizontal(Dirs.left);
+		}
+		else if (horiz > 0)
+			FlipHorizontal(Dirs.right);
+		
+        GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
+
 
 		// Check for win
 		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {

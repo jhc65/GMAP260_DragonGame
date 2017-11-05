@@ -9,9 +9,11 @@ public class ShootController : MonoBehaviour {
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
 	private int next;
-	public float bulletVelocity = 20.0f;
+	public float bulletVelocity = 10.0f;
 	private GameObject currentBullet;
-	private float bulletSpawnOffset = 0.5f;
+	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center
+	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center
+
 	private bool canShoot = true;
 
 	// Init array of bullets
@@ -26,8 +28,10 @@ public class ShootController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!canShoot) return;
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			
+
+
+		if (Input.GetMouseButtonDown(0)) {
+
 			GameObject bullet = bullets[next++];
 			if (next >= bullets.Length) {
 				next = 0;
@@ -37,37 +41,15 @@ public class ShootController : MonoBehaviour {
 			bullet.transform.rotation = Quaternion.identity;
 			currentBullet = bullet;
 
-			// Shoot in direction player is trying to face
-			if (Input.GetAxis("Vertical") > 0)
-				ShootUp();
-			else if (Input.GetAxis("Horizontal") < 0)
-				ShootLeft();
-			else if (Input.GetAxis("Horizontal") > 0)
-				ShootRight();
-			else
-				ShootDown();
+			// Shoot bullet in direction of cursor is
+			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+			Vector2 myPos = new Vector2(transform.position.x,transform.position.y);
+			Vector2 direction = cursorInWorldPos - myPos;
+			direction.Normalize();
+			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
+			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
 		}
 			
-	}
-
-	void ShootUp() {
-		currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y + bulletSpawnOffset, transform.position.z);
-		currentBullet.GetComponent<Rigidbody>().velocity = new Vector3(0f, bulletVelocity, 0f);
-	}
-
-	void ShootDown() {
-		currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y - bulletSpawnOffset, transform.position.z);
-		currentBullet.GetComponent<Rigidbody>().velocity = new Vector3(0f, -bulletVelocity, 0f);
-	}
-
-	void ShootLeft() {
-		currentBullet.transform.position = new Vector3(transform.position.x - bulletSpawnOffset, transform.position.y, transform.position.z);
-		currentBullet.GetComponent<Rigidbody>().velocity = new Vector3(-bulletVelocity, 0f, 0f);
-	}
-
-	void ShootRight() {
-		currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffset, transform.position.y, transform.position.z);
-		currentBullet.GetComponent<Rigidbody>().velocity = new Vector3(bulletVelocity, 0f, 0f);
 	}
 
 	public void DisableShooting() {

@@ -114,12 +114,14 @@ public class PlayerParametersController : MonoBehaviour
 
     public void ChangeEnemyHealth(float newHealthIn)
     {
+		/*
         enemyHealth_hitsToKillValue.text = ((int)newHealthIn).ToString();
         foreach (MoveTowardsPlayer enemy in firstFourEnemies) {
-            enemy.ChangeEnemyHealth((int)newHealthIn);
+           enemy.ChangeEnemyHealth((int)newHealthIn);
         }
 
         enemyAI_Prefab.ChangeEnemyHealth((int)newHealthIn);
+        */
     }
 
     public void ChangeWarriorMovementSpeed(float newMoveSpeedIn)
@@ -136,6 +138,7 @@ public class PlayerParametersController : MonoBehaviour
 
     public void ChangeRogueMovementSpeed(float newMoveSpeedIn)
     {
+		/*
         warriorMovementSpeedValue.text = newMoveSpeedIn.ToString();
         warriorMovementSpeed.value = newMoveSpeedIn;
         rogueMovementSpeedValue.text = newMoveSpeedIn.ToString();
@@ -144,6 +147,7 @@ public class PlayerParametersController : MonoBehaviour
         }
 
         enemyAI_Prefab.ChangeEnemyMoveSpeed(newMoveSpeedIn);
+        */
     }
 
     // Changes whether the Parameter UI is visible, and "pauses" the game if it is

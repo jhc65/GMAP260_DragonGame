@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour {
 				ShootController sc = GetComponent<ShootController>();
 				sc.DisableShooting();
 				gameOverText.GetComponent<Text>().enabled = true;
+				EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
+				es.Disable();
+				gameOverText.GetComponent<Text>().enabled = true;
 			}
 		}
 	}

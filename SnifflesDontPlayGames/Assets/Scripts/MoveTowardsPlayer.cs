@@ -30,4 +30,24 @@ public class MoveTowardsPlayer : MonoBehaviour {
 				
 		}
 	}
+
+    public float GetEnemyMoveSpeed()
+    {
+        return speed;
+    }
+
+    public void ChangeEnemyMoveSpeed(float newSpeedIn)
+    {
+        speed = newSpeedIn;
+    }
+
+    public float GetEnemyHealth()
+    {
+        return (float)hp;
+    }
+
+    public void ChangeEnemyHealth(int newHealthIn)
+    {
+        hp = newHealthIn;
+    }
 }

@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public float playerSpeed = 4f;
+    private int maxHealth = 5;
 	private int hp = 5;
 	private bool canMove = true;
 
+    public GameObject gameOverText;
+    public GameObject victoryText;
+
+    public Text playerhealthUI;
+
 	void Start () {
-		GameObject text = GameObject.Find("Game Over Text");
-		GameObject text2 = GameObject.Find("Victory Text");
-		text.GetComponent<Text>().enabled = false;
-		text2.GetComponent<Text>().enabled = false;
-	}
+        playerhealthUI.text = hp.ToString();
+    }
 
 	void FixedUpdate () {
 		if (!canMove)
@@ -25,21 +28,42 @@ public class PlayerController : MonoBehaviour {
 
 		// Check for win
 		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-			GameObject text = GameObject.Find("Victory Text");
-			text.GetComponent<Text>().enabled = true;
+			victoryText.GetComponent<Text>().enabled = true;
 		}
     }
 
 	void OnCollisionEnter(Collision collision) {
 		if (collision.collider.tag == "Enemy") {
 			hp--;
+            playerhealthUI.text = hp.ToString();
 			if (hp <= 0) { 
 				canMove = false;
 				ShootController sc = GetComponent<ShootController>();
 				sc.DisableShooting();
-				GameObject text = GameObject.Find("Game Over Text");
-				text.GetComponent<Text>().enabled = true;
+				gameOverText.GetComponent<Text>().enabled = true;
 			}
 		}
 	}
+
+    public float GetPlayerHealth()
+    {
+        return (float)hp;
+    }
+
+    public void ChangePlayerHealth(int newHealthIn)
+    {
+        playerhealthUI.text = newHealthIn.ToString();
+        maxHealth = newHealthIn;
+        hp = newHealthIn;
+    }
+
+    public float GetPlayerMovementSpeed()
+    {
+        return playerSpeed;
+    }
+
+    public void ChangePlayerMovementSpeed(float newMoveSpeedIn)
+    {
+        playerSpeed = newMoveSpeedIn;
+    }
 }

@@ -10,6 +10,8 @@ using UnityEngine;
 */
 public class EnemySpawner : MonoBehaviour {
 
+    public GameController gameController;
+
 	public GameObject enemy;
 	public Vector3[] spawnPoints;
 	public float frequency = 5.0F;
@@ -30,7 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 			Vector3 spawnPosition = spawnPoints[i];
 			GameObject spawnedEnemy = GameObject.Instantiate(enemy);
 			spawnedEnemy.transform.position = spawnPosition;
-			spawnCooldown = frequency;
+            spawnCooldown = gameController.GetEnemySpawnFrequency();
 		}
 		else {
 			spawnCooldown -= Time.deltaTime;

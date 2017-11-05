@@ -9,7 +9,7 @@ public class ShootController : MonoBehaviour {
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
 	private int next;
-	private float bulletVelocity = 20.0f;
+	public float bulletVelocity = 20.0f;
 	private GameObject currentBullet;
 	private float bulletSpawnOffset = 0.5f;
 	private bool canShoot = true;

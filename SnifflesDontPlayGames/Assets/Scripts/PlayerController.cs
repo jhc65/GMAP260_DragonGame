@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour {
 				canMove = false;
 				ShootController sc = GetComponent<ShootController>();
 				sc.DisableShooting();
+				EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
+				es.Disable();
 				GameObject text = GameObject.Find("Game Over Text");
 				text.GetComponent<Text>().enabled = true;
 			}

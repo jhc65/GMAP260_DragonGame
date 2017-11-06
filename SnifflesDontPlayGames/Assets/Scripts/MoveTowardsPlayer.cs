@@ -66,9 +66,10 @@ public class MoveTowardsPlayer : MonoBehaviour {
 
 			// Remove bullet
 			collision.gameObject.SetActive(false);
-
+			// Spawn explosition
+			ShootController sc = target.gameObject.GetComponent<ShootController>();
+			sc.SpawnExplosion(gameObject.transform.position);
 			hp--;
-			// GetComponent<Renderer>().material.color = hitColor; // Effect to show enemy was hit. Change color to white
 			if (hp <= 0)
 				Destroy(gameObject);
 

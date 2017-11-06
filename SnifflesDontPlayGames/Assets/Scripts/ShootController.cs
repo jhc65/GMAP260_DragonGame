@@ -5,10 +5,15 @@ using UnityEngine;
 public class ShootController : MonoBehaviour {
 
 	public GameObject bulletPrefab;
+	public GameObject explosionPrefab;
+
 
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
-	private int next;
+	//private GameObject[] explosions = new GameObject[numBullets];
+
+	private int nextBullet;
+	private int nextExplosion;
 	public float bulletVelocity = 8000.0f;
 	private GameObject currentBullet;
 	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
@@ -21,20 +26,21 @@ public class ShootController : MonoBehaviour {
 		for (int i = 0; i < bullets.Length; i++) {
 			bullets[i] = (GameObject)Instantiate(bulletPrefab);
 			bullets[i].SetActive(false);
+		//	explosions[i] = (GameObject)Instantiate(explosionPrefab);
+		//	explosions[i].SetActive(false);
 		}
-		next = 0;
+		nextBullet = 0;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (!canShoot) return;
-
 		// Fire on click
 		if (Input.GetMouseButtonDown(0)) {
 
-			GameObject bullet = bullets[next++];
-			if (next >= bullets.Length) {
-				next = 0;
+			GameObject bullet = bullets[nextBullet++];
+			if (nextBullet >= bullets.Length) {
+				nextBullet = 0;
 			}
 
 			bullet.SetActive(true);
@@ -50,11 +56,9 @@ public class ShootController : MonoBehaviour {
 			// Choose where to spawn fire from (left side of mouth or right)
 			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right)) {
 				bulletSpawnOffsetX = 1 * Mathf.Abs(bulletSpawnOffsetX);
-				print("Facing right. Gonna use " + (transform.position.x + bulletSpawnOffsetX));
 			}
 			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left)) {
 				bulletSpawnOffsetX = -1 * Mathf.Abs(bulletSpawnOffsetX);
-				print("Facing left. Gonna use " + (transform.position.x + bulletSpawnOffsetX));
 			}
 
 			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
@@ -72,6 +76,23 @@ public class ShootController : MonoBehaviour {
 				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));
 			}
 		}
+	}
+
+	public void SpawnExplosion(Vector3 atPos) {
+		/*
+		GameObject explosion = explosions[nextExplosion++];
+		if (nextExplosion >= explosions.Length) {
+			nextExplosion = 0;
+		}
+
+		explosion.SetActive(true);
+		*/
+		GameObject explosion = GameObject.Instantiate(explosionPrefab);
+		explosion.SetActive(true);
+		explosion.transform.position = atPos;
+
+		// Destroy this after animation is complete and small delay
+		Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.1f); 
 	}
 
 	public void DisableShooting() {

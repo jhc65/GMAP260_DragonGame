@@ -138,7 +138,7 @@ public class PlayerParametersController : MonoBehaviour
 
     public void ChangeRogueMovementSpeed(float newMoveSpeedIn)
     {
-		/*
+		
         warriorMovementSpeedValue.text = newMoveSpeedIn.ToString();
         warriorMovementSpeed.value = newMoveSpeedIn;
         rogueMovementSpeedValue.text = newMoveSpeedIn.ToString();
@@ -147,7 +147,7 @@ public class PlayerParametersController : MonoBehaviour
         }
 
         enemyAI_Prefab.ChangeEnemyMoveSpeed(newMoveSpeedIn);
-        */
+       
     }
 
     // Changes whether the Parameter UI is visible, and "pauses" the game if it is

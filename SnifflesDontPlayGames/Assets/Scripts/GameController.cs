@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     public GameObject DevUI;
     public PlayerParametersController devUIController;
-    private float enemySpawnFrequency = 5.0f;
+    private float enemySpawnFrequency = .01f;
 
 	// Use this for initialization
 	void Start () {

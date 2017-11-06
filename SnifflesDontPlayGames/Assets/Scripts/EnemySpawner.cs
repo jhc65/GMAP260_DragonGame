@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour {
 	private bool enabled = true;
 
 	void Start () {
-		
+		gameController.ChangeEnemySpawnFrequency(frequency);
 	}
 	
 	void Update () {

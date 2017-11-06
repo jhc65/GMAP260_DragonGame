@@ -55,20 +55,24 @@ public class PlayerController : MonoBehaviour {
 		// Check for win
 		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
 			victoryText.GetComponent<Text>().enabled = true;
+			StopActivity();
 		}
     }
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.collider.tag == "Enemy") {
+	void StopActivity() {
+		canMove = false;
+		ShootController sc = GetComponent<ShootController>();
+		sc.DisableShooting();
+		EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
+		es.Disable();
+	}
+
+	// Called when enemy touches the player
+	void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.GetComponent<PolygonCollider2D>().tag == "Enemy") {
 			hp--;
             playerhealthUI.text = hp.ToString();
 			if (hp <= 0) { 
-				canMove = false;
-				ShootController sc = GetComponent<ShootController>();
-				sc.DisableShooting();
-				gameOverText.GetComponent<Text>().enabled = true;
-				EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
-				es.Disable();
 				gameOverText.GetComponent<Text>().enabled = true;
 			}
 		}

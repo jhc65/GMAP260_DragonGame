@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class MoveTowardsPlayer : MonoBehaviour {
 
-	public Transform target;
 	public float speed = 5f;
-	private int hp = 3;
+	private int hp = 1;
 	private FacingDir currentDir;
+	private Transform target; // This is set to private since making it public would require prefabbing the player...and then the text...this is just easier for now
 
 	void Start () {
 		currentDir = new FacingDir();
 		currentDir = GetDirectionToTarget();
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
-	// Get the direction to the target. Optional argument if you want the return direction flipped
-	FacingDir GetDirectionToTarget(bool flip = false) {
+	// Get the direction to the target.
+	FacingDir GetDirectionToTarget() {
+		FacingDir leftDir = new FacingDir("left");
+		FacingDir rightDir = new FacingDir("right");
+
+		if (target == null)
+			return leftDir;
+		
 		Vector3 left = transform.TransformDirection(Vector3.left);
 		Vector3 toTarget = target.position - transform.position;
 		float leftDotProduct = Vector3.Dot(left, toTarget);
 		if (leftDotProduct < 0) { // target is to the right
-			if (flip)
-				return Dirs.left; 
-			else
-				return Dirs.right;
+			return rightDir;
 		}	
 		else if (leftDotProduct > 0) { // target is to the right
-			if (flip)
-				return Dirs.right; 
-			else
-				return Dirs.left;
+			return leftDir;
 		}
 		else
-			return Dirs.left; // target is on the player
+			return leftDir; // target is on the player
 	}
 
 	// Flip transform
@@ -52,15 +53,19 @@ public class MoveTowardsPlayer : MonoBehaviour {
 
 
 	void Update () {
+		if (target == null)
+			return;
 		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-		FlipDir(GetDirectionToTarget(true));
+		FacingDir flipTo = GetDirectionToTarget();
+		flipTo.Flip();
+		FlipDir(flipTo);
 	}
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.collider.tag == "Projectile") {
+	void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.GetComponent<PolygonCollider2D>().tag == "Projectile") {
 
 			// Remove bullet
-			collision.collider.gameObject.SetActive(false);
+			collision.gameObject.SetActive(false);
 
 			hp--;
 			// GetComponent<Renderer>().material.color = hitColor; // Effect to show enemy was hit. Change color to white

@@ -114,14 +114,14 @@ public class PlayerParametersController : MonoBehaviour
 
     public void ChangeEnemyHealth(float newHealthIn)
     {
-		/*
+		
         enemyHealth_hitsToKillValue.text = ((int)newHealthIn).ToString();
         foreach (MoveTowardsPlayer enemy in firstFourEnemies) {
            enemy.ChangeEnemyHealth((int)newHealthIn);
         }
 
         enemyAI_Prefab.ChangeEnemyHealth((int)newHealthIn);
-        */
+        
     }
 
     public void ChangeWarriorMovementSpeed(float newMoveSpeedIn)

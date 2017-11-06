@@ -29,7 +29,7 @@ public class ShootController : MonoBehaviour {
 	void Update () {
 		if (!canShoot) return;
 
-
+		// Fire on click
 		if (Input.GetMouseButtonDown(0)) {
 
 			GameObject bullet = bullets[next++];
@@ -38,32 +38,33 @@ public class ShootController : MonoBehaviour {
 			}
 
 			bullet.SetActive(true);
-			bullet.transform.rotation = Quaternion.identity;
 			currentBullet = bullet;
 
 			// Shoot bullet in direction of cursor is
-			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 myPos = new Vector2(transform.position.x,transform.position.y);
 			Vector2 direction = cursorInWorldPos - myPos;
 
 			direction.Normalize();
 
 			// Choose where to spawn fire from (left side of mouth or right)
-			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right))
+			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right)) {
 				bulletSpawnOffsetX = 1 * Mathf.Abs(bulletSpawnOffsetX);
-			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left))
+				print("Facing right. Gonna use " + (transform.position.x + bulletSpawnOffsetX));
+			}
+			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left)) {
 				bulletSpawnOffsetX = -1 * Mathf.Abs(bulletSpawnOffsetX);
-
+				print("Facing left. Gonna use " + (transform.position.x + bulletSpawnOffsetX));
+			}
 
 			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
 			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
-
 			Vector3 vel = currentBullet.GetComponent<Rigidbody2D>().velocity;
 
 			// Face fireball to the direction it is traveling
-			// Left. TOOD: Figure out the math
+			// Left
 			if (direction.x < 0) {
-				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));			
+				currentBullet.transform.Rotate(new Vector3(0f,0f, 180 - vel.y));			
 			}
 
 			// Right
@@ -71,7 +72,6 @@ public class ShootController : MonoBehaviour {
 				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));
 			}
 		}
-			
 	}
 
 	public void DisableShooting() {

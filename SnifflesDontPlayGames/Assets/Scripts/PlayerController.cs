@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour {
             playerhealthUI.text = hp.ToString();
 			if (hp <= 0) { 
 				gameOverText.GetComponent<Text>().enabled = true;
+				StopActivity();
 			}
 		}
 	}

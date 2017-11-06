@@ -52,8 +52,6 @@ public class FacingDir {
 		else
 			dir = "up";
 	}
-
-
 }
 
 public static class Dirs {

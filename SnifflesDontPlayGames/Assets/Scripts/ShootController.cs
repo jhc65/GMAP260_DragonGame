@@ -9,10 +9,10 @@ public class ShootController : MonoBehaviour {
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
 	private int next;
-	public float bulletVelocity = 10.0f;
+	public float bulletVelocity = 8000.0f;
 	private GameObject currentBullet;
-	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center
-	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center
+	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
+	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center (defaulted to facing left)
 
 	private bool canShoot = true;
 
@@ -45,9 +45,31 @@ public class ShootController : MonoBehaviour {
 			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			Vector2 myPos = new Vector2(transform.position.x,transform.position.y);
 			Vector2 direction = cursorInWorldPos - myPos;
+
 			direction.Normalize();
+
+			// Choose where to spawn fire from (left side of mouth or right)
+			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right))
+				bulletSpawnOffsetX = 1 * Mathf.Abs(bulletSpawnOffsetX);
+			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left))
+				bulletSpawnOffsetX = -1 * Mathf.Abs(bulletSpawnOffsetX);
+
+
 			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
 			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
+
+			Vector3 vel = currentBullet.GetComponent<Rigidbody2D>().velocity;
+
+			// Face fireball to the direction it is traveling
+			// Left. TOOD: Figure out the math
+			if (direction.x < 0) {
+				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));			
+			}
+
+			// Right
+			else { 
+				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));
+			}
 		}
 			
 	}

@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour {
 		currentDir = new FacingDir("left");
     }
 
-	void FlipHorizontal(FacingDir toDir) {
-		if (currentDir == null || toDir.Equals(currentDir))
+	void FlipHorizontal() {
+		if (currentDir == null)
 			return;
 
 		// Switch the way the player is labelled as facing
@@ -38,18 +38,17 @@ public class PlayerController : MonoBehaviour {
 		if (!canMove)
 			return;
 
-
 		float horiz = Input.GetAxis("Horizontal");
 		float vert = Input.GetAxis("Vertical");
-		print("horiz = " + horiz);
-		print("vert = " + vert);
         Vector3 targetVelocity = new Vector3(horiz, vert);
-		if (horiz <= 0) {
-			FlipHorizontal(Dirs.left);
+
+		if (currentDir.IsLeft() && horiz > 0) {
+			FlipHorizontal();
 		}
-		else if (horiz > 0)
-			FlipHorizontal(Dirs.right);
-		
+		if (currentDir.IsRight() && horiz < 0) {
+			FlipHorizontal();
+		}
+
         GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
 
 
@@ -96,4 +95,13 @@ public class PlayerController : MonoBehaviour {
     {
         playerSpeed = newMoveSpeedIn;
     }
+
+	public FacingDir GetPlayerDirection() {
+		return currentDir;
+	}
+
+	public void SetPlayerDirection(FacingDir dir) {
+		currentDir = dir;
+	}
+
 }

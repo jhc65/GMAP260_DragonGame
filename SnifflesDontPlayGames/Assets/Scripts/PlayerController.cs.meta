@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 4f30e054ba2355944ad280dc8831895f
-timeCreated: 1509070675
+timeCreated: 1510080654
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameOverText: {instanceID: 0}
+  - victoryText: {instanceID: 0}
+  - playerhealthUI: {instanceID: 0}
+  - injurySound: {fileID: 8300000, guid: 61d7a72b2623e4f66a29d3219d4d0ec4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

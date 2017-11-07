@@ -11,14 +11,18 @@ public class PlayerController : MonoBehaviour {
 	private bool canMove = true;
 	private FacingDir currentDir;
 
-
     public GameObject gameOverText;
 	public GameObject victoryText;
     public Text playerhealthUI;
 
+	private AudioSource source;
+	public AudioClip injurySound;
+
 	void Start () {
         playerhealthUI.text = hp.ToString();
 		currentDir = new FacingDir("left");
+
+		source = GetComponent<AudioSource>();
     }
 
 	void FlipHorizontal() {
@@ -70,6 +74,12 @@ public class PlayerController : MonoBehaviour {
 	// Called when enemy touches the player
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.GetComponent<PolygonCollider2D>().tag == "Enemy") {
+
+			//play injury sound
+			float vol = 1.0f;
+			//source.PlayOneShot(injurySound, vol);
+			source.Play();
+
 			hp--;
             playerhealthUI.text = hp.ToString();
 			if (hp <= 0) { 

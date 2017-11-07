@@ -7,6 +7,7 @@ public class ShootController : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public GameObject explosionPrefab;
 
+	public AudioClip shootSound;
 
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
@@ -19,6 +20,8 @@ public class ShootController : MonoBehaviour {
 	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
 	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center (defaulted to facing left)
 
+	private AudioSource source;
+
 	private bool canShoot = true;
 
 	// Init array of bullets
@@ -30,6 +33,8 @@ public class ShootController : MonoBehaviour {
 		//	explosions[i].SetActive(false);
 		}
 		nextBullet = 0;
+
+		source = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -45,6 +50,11 @@ public class ShootController : MonoBehaviour {
 
 			bullet.SetActive(true);
 			currentBullet = bullet;
+
+			//trigger audio
+			//float vol = 1.0f;
+			//source.PlayOneShot(shootSound,vol);
+
 
 			// Shoot bullet in direction of cursor is
 			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

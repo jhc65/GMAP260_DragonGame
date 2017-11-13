@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Facing.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\MoveTowardsPlayer.cs" />
+     <Compile Include="Assets\Scripts\MoveTowardStuffies.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerParametersController.cs" />
      <Compile Include="Assets\Scripts\ShootController.cs" />

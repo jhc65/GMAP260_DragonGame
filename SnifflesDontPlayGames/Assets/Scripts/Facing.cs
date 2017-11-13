@@ -5,21 +5,43 @@
 public class FacingDir {
 	private string dir;
 
+	/*
+	 * State int for animation controller
+	 * Left = 0
+	 * Right = 1
+	 * Up = 2
+	 * Down = 3
+	 */
+	private int state; 
+
 	// Default constructor
 	public FacingDir() {
 		dir = "left";
+		state = 0;
 	}
 
 	public FacingDir(string direction) {
-		dir = direction;
+		SetDir(direction);
 	}
 
 	public void SetDir(string direction) {
 		dir = direction;
+		if (IsLeft()) 
+			state = 0;
+		if (IsRight())
+			state = 1;
+		if (IsUp())
+			state = 2;
+		if (IsDown())
+			state =3;
 	}
 
 	public string GetDir() {
 		return dir;
+	}
+
+	public int GetInt() {
+		return state;
 	}
 
 	public bool Equals(FacingDir d) {
@@ -44,13 +66,13 @@ public class FacingDir {
 
 	public void Flip() {
 		if (IsRight())
-			dir = "left";
+			SetDir("left");
 		else if (IsLeft())
-			dir = "right";
+			SetDir("right");
 		else if (IsUp())
-			dir = "down";
+			SetDir("down");
 		else
-			dir = "up";
+			SetDir("up");
 	}
 }
 

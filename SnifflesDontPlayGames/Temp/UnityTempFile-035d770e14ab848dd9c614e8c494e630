@@ -96,11 +96,11 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
-'Assets/MoveTowardStuffies.cs'
 'Assets/Scripts/EnemySpawner.cs'
 'Assets/Scripts/Facing.cs'
 'Assets/Scripts/GameController.cs'
 'Assets/Scripts/MoveTowardsPlayer.cs'
+'Assets/Scripts/MoveTowardStuffies.cs'
 'Assets/Scripts/PlayerController.cs'
 'Assets/Scripts/PlayerParametersController.cs'
 'Assets/Scripts/ShootController.cs'

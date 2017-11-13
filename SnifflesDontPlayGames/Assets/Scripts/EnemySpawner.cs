@@ -13,16 +13,22 @@ public class EnemySpawner : MonoBehaviour {
     public GameController gameController;
 
 	public GameObject enemy;
-	public Vector3[] spawnPoints;
-	public float frequency = 5.0F;
+    public GameObject stuffyStealer;
+    public Vector3[] spawnPoints;
+    public Vector3[] spawnPointsForStealers;
+    public float frequency = 5.0F;
+    public float frequencyForStealers = 10.0F;
 	public int maxToSpawn = 4;
 	public float spreadDistance = 20.0f;
 
 	private float spawnCooldown = 0.0f;
-	private bool enabled = true;
+    private float stealerCoolDown = 0.0f;
+
+    private bool enabled = true;
 
 	void Start () {
 		gameController.ChangeEnemySpawnFrequency(frequency);
+        stealerCoolDown = frequencyForStealers;
 	}
 	
 	void Update () {
@@ -64,9 +70,28 @@ public class EnemySpawner : MonoBehaviour {
 		else {
 			spawnCooldown -= Time.deltaTime;
 		}
-	}
 
-	public void Enable() {
+        if (stealerCoolDown <= 0.0f && spawnPoints.Length > 0)
+        {
+            int numToSpawn = 1;
+            int spawnPointIndex = Random.Range(0, spawnPointsForStealers.Length); // random spawn point
+
+            Vector3 spawnPosition = spawnPointsForStealers[spawnPointIndex];
+            GameObject spawnedStealer = GameObject.Instantiate(stuffyStealer);
+            Vector3 positionToMove = spawnPosition;
+               
+            spawnedStealer.transform.position = positionToMove;
+            stealerCoolDown = frequencyForStealers;
+            
+        }
+        else
+        {
+            stealerCoolDown -= Time.deltaTime;
+        }
+
+    }
+
+    public void Enable() {
 		enabled = true;
 	}
 

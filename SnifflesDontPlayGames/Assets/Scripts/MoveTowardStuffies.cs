@@ -64,7 +64,7 @@ public class MoveTowardStuffies : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PolygonCollider2D>().tag == "Projectile")
+        if (collision.gameObject.CompareTag("Projectile"))
         {
 
             // Remove bullet

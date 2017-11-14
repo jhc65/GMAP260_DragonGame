@@ -8,6 +8,10 @@ TagManager:
   - Projectile
   - Spawner
   - Stuffy
+  - Stealer
+  - Door
+  - Dropped
+  - Held
   layers:
   - Default
   - TransparentFX

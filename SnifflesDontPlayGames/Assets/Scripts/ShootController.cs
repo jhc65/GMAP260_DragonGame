@@ -8,6 +8,7 @@ public class ShootController : MonoBehaviour {
 	public GameObject explosionPrefab;
 
 	public AudioClip shootSound;
+	public bool muted = true;
 
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];

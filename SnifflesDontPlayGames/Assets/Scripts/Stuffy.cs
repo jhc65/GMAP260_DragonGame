@@ -1,50 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Stuffy : MonoBehaviour
-{
+public class Stuffy : MonoBehaviour {
 
-    Transform newParent;
-    public Text stuffyCount;
-    public int stuffies;
-    Vector3 position;
+	private Transform newParent;
+    private Vector3 position;
+
+	private bool isHeld = false;
+	private GameObject objHolding;
 
     void Start() {
-        SetStuffyCount();
         position = transform.position;
 
     }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
 
-        if (collision.gameObject.CompareTag("Stealer"))
+    void OnTriggerEnter2D(Collider2D collision) {
+
+		if (collision.gameObject.CompareTag("Stealer") && !isHeld)
         {
             newParent = collision.transform;
             transform.parent = newParent; //changes stuffy parent
-            gameObject.tag = "Untagged";
+			objHolding = collision.gameObject;
+			SetHold(true);
+		}
+			
+	}
 
-            Debug.Log("stuffy get!"); //displays in console
-        }
-        if (collision.gameObject.CompareTag("Door"))
-        {
-            stuffies--;
-            SetStuffyCount();
-            gameObject.SetActive(false);
+	public void ReturnStuffy() {
+		transform.position = position; //return to original position
+		isHeld = false;
+		gameObject.tag = "Stuffy";
+	}
 
-        }
-        if (collision.gameObject.CompareTag("Player") && gameObject.tag == "Stuffy")
-        {
-            transform.position = position; //return to original position
 
-            Debug.Log("return"); //displays in console
-        }
+	public void SetHold(bool isholding) {
+		isHeld = isholding;
+		if (!isHeld) {
+			gameObject.tag = "Dropped";
+		} else {
+			gameObject.tag = "Held";
+		}
+			objHolding.GetComponent<MoveTowardStuffies>().SetIsHoldingItem(isHeld);
+	}
 
-    }
-
-    //updates stuffy count
-    void SetStuffyCount() {
-        stuffyCount.text = "Stuffies Left: " + stuffies.ToString(); 
-    }
+		
 }

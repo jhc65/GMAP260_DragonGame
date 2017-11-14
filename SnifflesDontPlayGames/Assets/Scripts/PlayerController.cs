@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public float playerSpeed = 4f;
-    private int maxHealth = 5;
-	private int hp = 5;
+    private int maxHealth = 9999;
+	private int hp = 9999;
 	private bool canMove = true;
 	private FacingDir currentDir;
 
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 
 	private AudioSource source;
 	public AudioClip injurySound;
+
+	public bool muted = true;
 
 	void Start () {
         playerhealthUI.text = hp.ToString();
@@ -57,9 +59,11 @@ public class PlayerController : MonoBehaviour {
 
 
 		// Check for win
-		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-			victoryText.GetComponent<Text>().enabled = true;
-			StopActivity();
+		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 &&
+			GameObject.FindGameObjectsWithTag("Stealer").Length == 0) {
+			// Commenting this out for dev purposes
+			// victoryText.GetComponent<Text>().enabled = true;
+			// StopActivity();
 		}
     }
 
@@ -71,22 +75,35 @@ public class PlayerController : MonoBehaviour {
 		es.Disable();
 	}
 
-	// Called when enemy touches the player
+
+
+
+	// Called when something touches the player
 	void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.GetComponent<PolygonCollider2D>().tag == "Enemy") {
+		if (collision.CompareTag("Enemy")) {
 
 			//play injury sound
 			float vol = 1.0f;
 			//source.PlayOneShot(injurySound, vol);
-			source.Play();
+			if (!muted) 
+				source.Play();
 
 			hp--;
             playerhealthUI.text = hp.ToString();
 			if (hp <= 0) { 
-				gameOverText.GetComponent<Text>().enabled = true;
-				StopActivity();
+				GameOver();
 			}
 		}
+
+		// If a snuffie is touched, put it back
+		if (collision.CompareTag("Dropped")) {
+			collision.gameObject.GetComponent<Stuffy>().ReturnStuffy();
+		}
+	}
+
+	public void GameOver() {
+		gameOverText.GetComponent<Text>().enabled = true;
+		StopActivity();
 	}
 
     public float GetPlayerHealth()

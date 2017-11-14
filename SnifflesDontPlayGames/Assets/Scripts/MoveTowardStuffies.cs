@@ -13,17 +13,17 @@ public class MoveTowardStuffies : MonoBehaviour {
 	private Animator anim; 
 	int dirHash;
 
+	bool isHolding = false;
+	private GameObject stuffyObj;
     void Start()
     {
 		anim = GetComponent<Animator>();
 		dirHash = Animator.StringToHash("Dir");
-
-		target = GameObject.FindGameObjectWithTag("Stuffy").transform;
 		player = GameObject.FindGameObjectWithTag("Player"); // needed for spawning explosition (bad for now)
-        currentDir = new FacingDir();
+		UpdateTarget();
+		currentDir = new FacingDir();
         currentDir = GetDirectionToTarget();
 		SetAnimationDirection(currentDir);
-        
     }
 
 	void SetAnimationDirection(FacingDir d) {
@@ -38,7 +38,6 @@ public class MoveTowardStuffies : MonoBehaviour {
 		if (target == null) {
 			print("Error. No target!");
             return leftDir;
-
 		}
 
         Vector3 left = transform.TransformDirection(Vector3.left);
@@ -53,19 +52,42 @@ public class MoveTowardStuffies : MonoBehaviour {
         }
 
     }
+	void UpdateTarget() {
+		if (isHolding) { // If holding stuffy head towards the door
+			target = GameObject.FindGameObjectWithTag("Door").transform;
+			return;
+		} else { // if not holding stuffy, head towards stuffy pile 
+			
+			if (GameObject.FindGameObjectsWithTag("Stuffy").Length == 0) {
+				stuffyObj = GameObject.FindGameObjectWithTag("Dropped");
+			}
+			else {
+				stuffyObj = GameObject.FindGameObjectWithTag("Stuffy");
+
+			}
+			if (GameObject.FindGameObjectsWithTag("Stuffy").Length == 0 &&
+				GameObject.FindGameObjectsWithTag("Dropped").Length == 0) {
+				target = GameObject.FindGameObjectWithTag("Door").transform;
+				return;
+			}
+			 
+			target = stuffyObj.transform;
+
+		}
+	}
 
     void Update()
     {
         if (target == null)
             return;
+		UpdateTarget();
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 		SetAnimationDirection(GetDirectionToTarget());
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
-        {
+        if (collision.gameObject.CompareTag("Projectile")) {
 
             // Remove bullet
             collision.gameObject.SetActive(false);
@@ -73,8 +95,16 @@ public class MoveTowardStuffies : MonoBehaviour {
             ShootController sc = player.GetComponent<ShootController>();
             sc.SpawnExplosion(gameObject.transform.position);
             hp--;
-            if (hp <= 0)
+			if (hp <= 0) {
+				if (isHolding)  { // If holding stuffy, drop it and let stuffy pile know
+					stuffyObj.GetComponent<Stuffy>().SetHold(false);
+					stuffyObj.tag = "Dropped";
+					transform.DetachChildren();
+
+				}
                 Destroy(gameObject);
+
+			}
 
         }
     }
@@ -98,4 +128,12 @@ public class MoveTowardStuffies : MonoBehaviour {
     {
         hp = newHealthIn;
     }
+
+	public void SetIsHoldingItem(bool holding) {
+		isHolding = holding;
+	}
+
+	public bool IsHoldingItem() {
+		return isHolding;
+	}
 }

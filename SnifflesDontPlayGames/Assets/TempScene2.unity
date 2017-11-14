@@ -19112,6 +19112,11 @@ Prefab:
       propertyPath: stuffyCount
       value: 
       objectReference: {fileID: 693868186}
+    - target: {fileID: 114908046295109202, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: stuffies
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
   m_IsPrefabParent: 0

@@ -34,7 +34,7 @@ public class Stuffy : MonoBehaviour
             gameObject.SetActive(false);
 
         }
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && gameObject.tag == "Stuffy")
         {
             transform.position = position; //return to original position
 

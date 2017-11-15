@@ -62,7 +62,7 @@
      <Compile Include="Assets\Scripts\Stuffy.cs" />
      <Compile Include="Assets\Scripts\StuffyWatcher.cs" />
      <Compile Include="Assets\Scripts\ThiefLeaving.cs" />
-     <None Include="Assets\Sprites\Knight Files\Read Me.txt" />
+     <None Include="Assets\Sprites\3rdPartyKnight\Read Me.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Dropped
   - Held
+  - StuffyPile
   layers:
   - Default
   - TransparentFX

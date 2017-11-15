@@ -9,11 +9,23 @@ public class MoveTowardsPlayer : MonoBehaviour {
 	private FacingDir currentDir;
 	private Transform target; // This is set to private since making it public would require prefabbing the player...and then the text...this is just easier for now
 
+	private Animator anim; 
+	int dirHash;
+
 	void Start () {
+		anim = GetComponent<Animator>();
+		dirHash = Animator.StringToHash("Dir");
 		currentDir = new FacingDir();
 		currentDir = GetDirectionToTarget();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
+		SetAnimationDirection(currentDir);
 	}
+
+
+	void SetAnimationDirection(FacingDir d) {
+		anim.SetInteger(dirHash, d.GetInt());
+	}
+
 
 	// Get the direction to the target.
 	FacingDir GetDirectionToTarget() {
@@ -36,29 +48,12 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			return leftDir; // target is on the player
 	}
 
-	// Flip transform
-	void FlipDir(FacingDir toDir)
-	{
-		if (currentDir == null || toDir.Equals(currentDir))
-			return;
-
-		// Switch the way the player is labelled as facing
-		currentDir.Flip();
-
-		// Multiply the player's x local scale by -1
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
-
 
 	void Update () {
 		if (target == null)
 			return;
 		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-		FacingDir flipTo = GetDirectionToTarget();
-		flipTo.Flip();
-		FlipDir(flipTo);
+		SetAnimationDirection(GetDirectionToTarget());
 	}
 
 	void OnTriggerEnter2D(Collider2D collision) {

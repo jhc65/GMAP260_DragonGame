@@ -60,8 +60,8 @@
      <Compile Include="Assets\Scripts\PlayerParametersController.cs" />
      <Compile Include="Assets\Scripts\ShootController.cs" />
      <Compile Include="Assets\Scripts\Stuffy.cs" />
-     <Compile Include="Assets\StuffyWatcher.cs" />
-     <Compile Include="Assets\ThiefLeaving.cs" />
+     <Compile Include="Assets\Scripts\StuffyWatcher.cs" />
+     <Compile Include="Assets\Scripts\ThiefLeaving.cs" />
      <None Include="Assets\Sprites\Knight Files\Read Me.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

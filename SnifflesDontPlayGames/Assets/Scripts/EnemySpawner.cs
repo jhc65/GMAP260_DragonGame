@@ -71,8 +71,7 @@ public class EnemySpawner : MonoBehaviour {
 			spawnCooldown -= Time.deltaTime;
 		}
 
-		if (stealerCoolDown <= 0.0f && spawnPoints.Length > 0 &&
-			(GameObject.FindGameObjectsWithTag("Stuffy").Length > 0 || GameObject.FindGameObjectsWithTag("Dropped").Length > 0))
+		if (stealerCoolDown <= 0.0f && spawnPoints.Length > 0 && GameObject.FindGameObjectsWithTag("Stuffy").Length > 0)
         {
             int numToSpawn = 1;
             int spawnPointIndex = Random.Range(0, spawnPointsForStealers.Length); // random spawn point

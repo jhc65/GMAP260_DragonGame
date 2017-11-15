@@ -7,42 +7,35 @@ public class Stuffy : MonoBehaviour {
 	private Transform newParent;
     private Vector3 position;
 
-	private bool isHeld = false;
+
 	private GameObject objHolding;
+	private Transform pile;
 
     void Start() {
         position = transform.position;
-
+		pile = transform.parent.transform;
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
 
-		if (collision.gameObject.CompareTag("Stealer") && !isHeld)
-        {
+		// If a thief touches the stuffy and it has a parent (is a part of the stuffy pile), hold it
+		if (collision.gameObject.CompareTag("Stealer")) {
             newParent = collision.transform;
             transform.parent = newParent; //changes stuffy parent
 			objHolding = collision.gameObject;
-			SetHold(true);
+			objHolding.GetComponent<MoveTowardStuffies>().SetIsHoldingItem(true);
 		}
 			
+		// If a player touches the stuffy and it has no parent (alone :( ), return it
+		if (collision.gameObject.CompareTag("Player") && transform.parent == null) {
+			ReturnStuffy();
+		}
 	}
 
 	public void ReturnStuffy() {
 		transform.position = position; //return to original position
-		isHeld = false;
+		transform.parent = pile;
 		gameObject.tag = "Stuffy";
 	}
-
-
-	public void SetHold(bool isholding) {
-		isHeld = isholding;
-		if (!isHeld) {
-			gameObject.tag = "Dropped";
-		} else {
-			gameObject.tag = "Held";
-		}
-			objHolding.GetComponent<MoveTowardStuffies>().SetIsHoldingItem(isHeld);
-	}
-
 		
 }

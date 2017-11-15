@@ -15,6 +15,7 @@ public class MoveTowardStuffies : MonoBehaviour {
 
 	bool isHolding = false;
 	private GameObject stuffyObj;
+
     void Start()
     {
 		anim = GetComponent<Animator>();
@@ -36,7 +37,7 @@ public class MoveTowardStuffies : MonoBehaviour {
         FacingDir rightDir = new FacingDir("right");
 
 		if (target == null) {
-			print("Error. No target!");
+			Debug.Log("Error. No target!");
             return leftDir;
 		}
 
@@ -56,23 +57,21 @@ public class MoveTowardStuffies : MonoBehaviour {
 		if (isHolding) { // If holding stuffy head towards the door
 			target = GameObject.FindGameObjectWithTag("Door").transform;
 			return;
-		} else { // if not holding stuffy, head towards stuffy pile 
-			
-			if (GameObject.FindGameObjectsWithTag("Stuffy").Length == 0) {
-				stuffyObj = GameObject.FindGameObjectWithTag("Dropped");
-			}
-			else {
-				stuffyObj = GameObject.FindGameObjectWithTag("Stuffy");
+		} else { 
+			// if not holding stuffy, head towards ground stuffies as a first priority
+			// if there are no stuffies on the ground, head towards the pile stuffies
+			GameObject[] possibleStuffies = GameObject.FindGameObjectsWithTag("Stuffy");
+			foreach (GameObject stuffy in possibleStuffies) {
+				if (stuffy.transform.parent == null) { // Stuffy is on the ground
+					target  = stuffy.transform;
+					return;
+				}
 
+				if (stuffy.transform.parent.CompareTag("StuffyPile")) { // Stuffy is in pile
+					target = stuffy.transform;
+					return;
+				}
 			}
-			if (GameObject.FindGameObjectsWithTag("Stuffy").Length == 0 &&
-				GameObject.FindGameObjectsWithTag("Dropped").Length == 0) {
-				target = GameObject.FindGameObjectWithTag("Door").transform;
-				return;
-			}
-			 
-			target = stuffyObj.transform;
-
 		}
 	}
 
@@ -96,16 +95,10 @@ public class MoveTowardStuffies : MonoBehaviour {
             sc.SpawnExplosion(gameObject.transform.position);
             hp--;
 			if (hp <= 0) {
-				if (isHolding)  { // If holding stuffy, drop it and let stuffy pile know
-					stuffyObj.GetComponent<Stuffy>().SetHold(false);
-					stuffyObj.tag = "Dropped";
-					transform.DetachChildren();
-
-				}
+				// Drop stuffy if any (detach from parent enemy)
+				transform.DetachChildren();
                 Destroy(gameObject);
-
 			}
-
         }
     }
 
@@ -131,6 +124,8 @@ public class MoveTowardStuffies : MonoBehaviour {
 
 	public void SetIsHoldingItem(bool holding) {
 		isHolding = holding;
+		UpdateTarget();
+
 	}
 
 	public bool IsHoldingItem() {

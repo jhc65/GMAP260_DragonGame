@@ -94,11 +94,6 @@ public class PlayerController : MonoBehaviour {
 				GameOver();
 			}
 		}
-
-		// If a snuffie is touched, put it back
-		if (collision.CompareTag("Dropped")) {
-			collision.gameObject.GetComponent<Stuffy>().ReturnStuffy();
-		}
 	}
 
 	public void GameOver() {

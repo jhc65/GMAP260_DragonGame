@@ -115,6 +115,14 @@ public class MoveTowardStuffies : MonoBehaviour {
                 Destroy(gameObject);
 			}
         }
+        else if (collision.gameObject.CompareTag("Explosion")) {
+            hp--;
+            if (hp <= 0) {
+                // Drop stuffy if any (detach from parent enemy)
+                transform.DetachChildren();
+                Destroy(gameObject);
+            }
+        }
     }
 
     public float GetEnemyMoveSpeed()

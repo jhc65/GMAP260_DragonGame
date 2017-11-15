@@ -83,8 +83,13 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			hp--;
 			if (hp <= 0)
 				Destroy(gameObject);
-
 		}
+        else if (collision.gameObject.CompareTag("Explosion")) {
+            hp--;
+            if (hp <= 0) {
+                Destroy(gameObject);
+            }
+        }
 	}
 
 	public float GetEnemyMoveSpeed()

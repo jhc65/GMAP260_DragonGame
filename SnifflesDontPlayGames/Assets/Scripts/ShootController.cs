@@ -61,6 +61,8 @@ public class ShootController : MonoBehaviour {
 			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 myPos = new Vector2(transform.position.x,transform.position.y);
 			Vector2 direction = cursorInWorldPos - myPos;
+            Vector2 distToTravel;
+            float timeToTravel;
 
 			direction.Normalize();
 
@@ -73,12 +75,16 @@ public class ShootController : MonoBehaviour {
 			}
 
 			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
+            distToTravel = new Vector2((cursorInWorldPos.x - currentBullet.transform.position.x), (cursorInWorldPos.y - currentBullet.transform.position.y));
 			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
 			Vector3 vel = currentBullet.GetComponent<Rigidbody2D>().velocity;
+            timeToTravel = (Mathf.Sqrt(Mathf.Pow(distToTravel.x, 2) + Mathf.Pow(distToTravel.y, 2)) / Mathf.Sqrt(Mathf.Pow(vel.x, 2) + Mathf.Pow(vel.y, 2)));
+            IEnumerator coroutine = BulletMovement(timeToTravel, currentBullet);
+            StartCoroutine(coroutine);
 
-			// Face fireball to the direction it is traveling
-			// Left
-			if (direction.x < 0) {
+            // Face fireball to the direction it is traveling
+            // Left
+            if (direction.x < 0) {
 				currentBullet.transform.Rotate(new Vector3(0f,0f, 180 - vel.y));			
 			}
 
@@ -89,7 +95,17 @@ public class ShootController : MonoBehaviour {
 		}
 	}
 
-	public void SpawnExplosion(Vector3 atPos) {
+    IEnumerator BulletMovement(float timeToTravel, GameObject movingBullet)
+    {
+        yield return new WaitForSeconds(timeToTravel);
+
+        if (movingBullet.activeSelf) {
+            movingBullet.SetActive(false);
+            SpawnExplosion(movingBullet.transform.position);
+        }
+    }
+
+    public void SpawnExplosion(Vector3 atPos) {
 		/*
 		GameObject explosion = explosions[nextExplosion++];
 		if (nextExplosion >= explosions.Length) {

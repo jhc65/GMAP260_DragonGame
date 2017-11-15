@@ -35,24 +35,39 @@ public class MoveTowardStuffies : MonoBehaviour {
     FacingDir GetDirectionToTarget() {
         FacingDir leftDir = new FacingDir("left");
         FacingDir rightDir = new FacingDir("right");
+		FacingDir upDir = new FacingDir("up");
+		FacingDir downDir = new FacingDir("down");
 
 		if (target == null) {
 			Debug.Log("Error. No target!");
             return leftDir;
 		}
 
+		// Check horizontal
         Vector3 left = transform.TransformDirection(Vector3.left);
         Vector3 toTarget = target.position - transform.position;
         float leftDotProduct = Vector3.Dot(left, toTarget);
-        if (leftDotProduct < 0)  { 
-			return rightDir; // target is to the right
-        } else if (leftDotProduct > 0) { 
-			return leftDir; // target is to the left
-		} else { // On the target
-            return leftDir; 
-        }
 
+		FacingDir favoredDirHoriz = new FacingDir("left");
+        if (leftDotProduct < 0)  { 
+			favoredDirHoriz = rightDir; // target is to the right
+		} // (otherwise it's left)
+
+		// Check vertical
+		Vector3 down = transform.TransformDirection(Vector3.down);
+		float downDotProduct = Vector3.Dot(down, toTarget);
+		FacingDir favoredDirVert = new FacingDir("down");
+		if (downDotProduct < 0)  { 
+			favoredDirVert = upDir; // target is up
+		} // (otherwise it's down)
+
+		// Check if the direction is more horizontal or more vertical
+		if (Mathf.Abs(leftDotProduct) >= Mathf.Abs(downDotProduct))
+			return favoredDirHoriz;
+		else
+			return favoredDirVert;
     }
+
 	void UpdateTarget() {
 		if (isHolding) { // If holding stuffy head towards the door
 			target = GameObject.FindGameObjectWithTag("Door").transform;

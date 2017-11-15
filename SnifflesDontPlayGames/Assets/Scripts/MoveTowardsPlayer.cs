@@ -15,9 +15,9 @@ public class MoveTowardsPlayer : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator>();
 		dirHash = Animator.StringToHash("Dir");
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 		currentDir = new FacingDir();
 		currentDir = GetDirectionToTarget();
-		target = GameObject.FindGameObjectWithTag("Player").transform;
 		SetAnimationDirection(currentDir);
 	}
 
@@ -31,21 +31,37 @@ public class MoveTowardsPlayer : MonoBehaviour {
 	FacingDir GetDirectionToTarget() {
 		FacingDir leftDir = new FacingDir("left");
 		FacingDir rightDir = new FacingDir("right");
+		FacingDir upDir = new FacingDir("up");
+		FacingDir downDir = new FacingDir("down");
 
-		if (target == null)
+		if (target == null) {
+			Debug.Log("Error. No target!");
 			return leftDir;
-		
+		}
+
+		// Check horizontal
 		Vector3 left = transform.TransformDirection(Vector3.left);
 		Vector3 toTarget = target.position - transform.position;
 		float leftDotProduct = Vector3.Dot(left, toTarget);
-		if (leftDotProduct < 0) { // target is to the right
-			return rightDir;
-		}	
-		else if (leftDotProduct > 0) { // target is to the right
-			return leftDir;
-		}
+
+		FacingDir favoredDirHoriz = new FacingDir("left");
+		if (leftDotProduct < 0)  { 
+			favoredDirHoriz = rightDir; // target is to the right
+		} // (otherwise it's left)
+
+		// Check vertical
+		Vector3 down = transform.TransformDirection(Vector3.down);
+		float downDotProduct = Vector3.Dot(down, toTarget);
+		FacingDir favoredDirVert = new FacingDir("down");
+		if (downDotProduct < 0)  { 
+			favoredDirVert = upDir; // target is up
+		} // (otherwise it's down)
+
+		// Check if the direction is more horizontal or more vertical
+		if (Mathf.Abs(leftDotProduct) >= Mathf.Abs(downDotProduct))
+			return favoredDirHoriz;
 		else
-			return leftDir; // target is on the player
+			return favoredDirVert;
 	}
 
 

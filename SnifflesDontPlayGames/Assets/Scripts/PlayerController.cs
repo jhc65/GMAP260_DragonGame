@@ -17,28 +17,31 @@ public class PlayerController : MonoBehaviour {
 
 	private AudioSource source;
 	public AudioClip injurySound;
+	private Animator anim; 
+	private int dirHash;
 
 	public bool muted = true;
+	private FacingDir dirLeft;
+	private FacingDir dirRight;
 
 	void Start () {
-        playerhealthUI.text = hp.ToString();
-		currentDir = new FacingDir("left");
+		anim = GetComponent<Animator>();
 
+        playerhealthUI.text = hp.ToString();
+		dirLeft = new FacingDir("left");
+		dirRight = new FacingDir("right");
+		currentDir = dirLeft;
+		dirHash = Animator.StringToHash("Dir");
+
+		SetAnimationDirection(currentDir);
 		source = GetComponent<AudioSource>();
+
     }
 
-	void FlipHorizontal() {
-		if (currentDir == null)
-			return;
-
-		// Switch the way the player is labelled as facing
-		currentDir.Flip();
-
-		// Multiply the player's x local scale by -1
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+	void SetAnimationDirection(FacingDir d) {
+		anim.SetInteger(dirHash, d.GetInt());
 	}
+
 
 	void FixedUpdate () {
 		if (!canMove)
@@ -47,16 +50,14 @@ public class PlayerController : MonoBehaviour {
 		float horiz = Input.GetAxis("Horizontal");
 		float vert = Input.GetAxis("Vertical");
         Vector3 targetVelocity = new Vector3(horiz, vert);
-
-		if (currentDir.IsLeft() && horiz > 0) {
-			FlipHorizontal();
-		}
-		if (currentDir.IsRight() && horiz < 0) {
-			FlipHorizontal();
-		}
+		
 
         GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
-
+		if (horiz < 0) {
+			SetAnimationDirection(dirLeft);
+		} else {
+			SetAnimationDirection(dirRight);
+		}
 
 		// Check for win
 		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 &&

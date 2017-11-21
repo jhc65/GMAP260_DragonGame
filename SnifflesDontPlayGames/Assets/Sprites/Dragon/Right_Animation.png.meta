@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: c882c1655da344068b4f68cd72f5cc24
+timeCreated: 1511227943
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Right_Animation_0
+    21300002: Right_Animation_1
+    21300004: Right_Animation_2
+    21300006: Right_Animation_3
+    21300008: Right_Animation_4
+    21300010: Right_Animation_5
+    21300012: Right_Animation_6
+    21300014: Right_Animation_7
+    21300016: Right_Animation_8
+    21300018: Right_Animation_9
+    21300020: Right_Animation_10
+    21300022: Right_Animation_11
+    21300024: Right_Animation_12
+    21300026: Right_Animation_13
+    21300028: Right_Animation_14
+    21300030: Right_Animation_15
+    21300032: Right_Animation_16
+    21300034: Right_Animation_17
+    21300036: Right_Animation_18
+    21300038: Right_Animation_19
+    21300040: Right_Animation_20
+    21300042: Right_Animation_21
+    21300044: Right_Animation_22
+    21300046: Right_Animation_23
+    21300048: Right_Animation_24
+    21300050: Right_Animation_25
+    21300052: Right_Animation_26
+    21300054: Right_Animation_27
+    21300056: Right_Animation_28
+    21300058: Right_Animation_29
+    21300060: Right_Animation_30
+    21300062: Right_Animation_31
+    21300064: Right_Animation_32
+    21300066: Right_Animation_33
+    21300068: Right_Animation_34
+    21300070: Right_Animation_35
+    21300072: Right_Animation_36
+    21300074: Right_Animation_37
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Right_Animation_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 2878
+        width: 325
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_1
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 2878
+        width: 324
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_2
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 2878
+        width: 325
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_3
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 2878
+        width: 324
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_4
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 2878
+        width: 325
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_5
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 2878
+        width: 324
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_6
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 2398
+        width: 325
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_7
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 2398
+        width: 324
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_8
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 2398
+        width: 325
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_9
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 2398
+        width: 324
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_10
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 2398
+        width: 325
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_11
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 2398
+        width: 324
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1919
+        width: 335
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_13
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1919
+        width: 333
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_14
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 1919
+        width: 335
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_15
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1919
+        width: 344
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_16
+      rect:
+        serializedVersion: 2
+        x: 1998
+        y: 1919
+        width: 345
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_17
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 1919
+        width: 344
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_18
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1438
+        width: 345
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_19
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 1438
+        width: 344
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_20
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 1438
+        width: 345
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_21
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1438
+        width: 344
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_22
+      rect:
+        serializedVersion: 2
+        x: 1998
+        y: 1438
+        width: 345
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_23
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 1438
+        width: 344
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_24
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 957
+        width: 345
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_25
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 957
+        width: 344
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_26
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 957
+        width: 345
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_27
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 957
+        width: 344
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_28
+      rect:
+        serializedVersion: 2
+        x: 1998
+        y: 957
+        width: 345
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_29
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 957
+        width: 344
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_30
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 478
+        width: 335
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_31
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 478
+        width: 333
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_32
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 478
+        width: 335
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_33
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 478
+        width: 333
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_34
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 478
+        width: 325
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_35
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 478
+        width: 324
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_36
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 325
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Right_Animation_37
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 0
+        width: 324
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

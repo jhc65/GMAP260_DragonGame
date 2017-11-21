@@ -11,7 +11,7 @@ public class MoveTowardStuffies : MonoBehaviour {
 	private GameObject player;
 
 	private Animator anim; 
-	int dirHash;
+	private int dirHash;
 
 	bool isHolding = false;
 	private GameObject stuffyObj;

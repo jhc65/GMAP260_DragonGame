@@ -25,6 +25,7 @@ public class ShootController : MonoBehaviour {
 
 	private bool canShoot = true;
 
+
 	// Init array of bullets
 	void Start () {
 		for (int i = 0; i < bullets.Length; i++) {

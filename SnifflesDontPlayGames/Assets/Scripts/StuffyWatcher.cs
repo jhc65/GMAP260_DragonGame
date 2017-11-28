@@ -10,7 +10,7 @@ public class StuffyWatcher : MonoBehaviour {
 	public Sprite[] pileSprites;
 
 	private int numStuffiesTotal;
-	private int numStuffiesStolen = 0;
+	private int numStuffiesAvailable = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +28,7 @@ public class StuffyWatcher : MonoBehaviour {
 		// Horribly not efficient but too lazy to do this another way
 		foreach (GameObject stuff in stuffies) {
 			if (stuff.transform.parent != null && stuff.transform.parent.CompareTag("StuffyPile")) 
-				numStuffiesStolen++;
+				numStuffiesAvailable++;
 		}
 		numStuffiesTotal = stuffies.Length;
 		UpdateStuffySprite();
@@ -38,12 +38,12 @@ public class StuffyWatcher : MonoBehaviour {
 			return;
 		}
 		stuffyCount.text = "Stuffies In Castle: " + numStuffiesTotal;
-		numStuffiesStolen = 0;
+		numStuffiesAvailable = 0;
 
 	}
 
 	void UpdateStuffySprite() {
-		GetComponent<SpriteRenderer>().sprite = pileSprites[numStuffiesStolen];
+		GetComponent<SpriteRenderer>().sprite = pileSprites[numStuffiesAvailable];
 
 	}
 }

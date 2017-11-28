@@ -6,17 +6,18 @@ public class ShootController : MonoBehaviour {
 
 	public GameObject bulletPrefab;
 	public GameObject explosionPrefab;
-
 	public AudioClip shootSound;
-	public bool muted = true;
-
+	public float[] velocities;
+	public int chargeSpeed = 100;
+	public int maxCharge = 1000;
+	public float minimumFiringVelocity = 20f;
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
 	//private GameObject[] explosions = new GameObject[numBullets];
 
 	private int nextBullet;
 	private int nextExplosion;
-	public float bulletVelocity = 8000.0f;
+
 	private GameObject currentBullet;
 	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
 	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center (defaulted to facing left)
@@ -24,10 +25,10 @@ public class ShootController : MonoBehaviour {
 	private AudioSource source;
 
 	private bool canShoot = true;
+	private float chargeLevel = 0f;
 
-
-	// Init array of bullets
 	void Start () {
+		// Init array of bullets
 		for (int i = 0; i < bullets.Length; i++) {
 			bullets[i] = (GameObject)Instantiate(bulletPrefab);
 			bullets[i].SetActive(false);
@@ -45,71 +46,61 @@ public class ShootController : MonoBehaviour {
 			transform.localPosition = new Vector3(13, 10, -1);
 		else if (dragonDirection.Equals(Dirs.left))
 			transform.localPosition = new Vector3(-14, 10, -1);
-		
 	}
+
+	// convert charge level to velocity
+	float GetCurrentVelocityFromChargeLevel() {
+		return chargeLevel;
+	}
+
+
 	// Update is called once per frame
 	void Update () {
-		
-
 		if (!canShoot) return;
 
 		UpdateMouthPosition();
 
-		// Fire on click
-		if (Input.GetMouseButtonDown(0)) {
+		// Start charging on mouse hold
+		if (Input.GetMouseButton(0)) {
 
 			GameObject bullet = bullets[nextBullet++];
+			currentBullet = bullet;
 			if (nextBullet >= bullets.Length) {
 				nextBullet = 0;
 			}
+			chargeLevel += Time.deltaTime * chargeSpeed;
+			chargeLevel = (chargeLevel > maxCharge - 1 ? maxCharge : chargeLevel);
+			print(chargeLevel);
 
-			bullet.SetActive(true);
-			currentBullet = bullet;
+		}
+		// Release mouse and fire
+		if (Input.GetMouseButtonUp(0))
+		{
+			float bulletVelocity = GetCurrentVelocityFromChargeLevel();
+			if (bulletVelocity < minimumFiringVelocity) return;
 
-			//trigger audio
-			//float vol = 1.0f;
-			//source.PlayOneShot(shootSound,vol);
+			Debug.Log(bulletVelocity);
+			chargeLevel = 0;
+			currentBullet.SetActive(true);
 
 
 			// Shoot bullet in direction of cursor is
 			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 myPos = new Vector2(transform.position.x,transform.position.y);
 			Vector2 direction = cursorInWorldPos - myPos;
-            Vector2 distToTravel;
-            float timeToTravel;
-
+			Vector2 distToTravel;
+			float timeToTravel;
 			direction.Normalize();
-
-			// Choose where to spawn fire from (left side of mouth or right)
-			/*
-			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right)) {
-				bulletSpawnOffsetX = 1 * Mathf.Abs(bulletSpawnOffsetX);
-			}
-			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left)) {
-				bulletSpawnOffsetX = -1 * Mathf.Abs(bulletSpawnOffsetX);
-			}
-			*/
 			currentBullet.transform.position = transform.position;
-            distToTravel = new Vector2((cursorInWorldPos.x - currentBullet.transform.position.x), (cursorInWorldPos.y - currentBullet.transform.position.y));
+			distToTravel = new Vector2((cursorInWorldPos.x - currentBullet.transform.position.x), (cursorInWorldPos.y - currentBullet.transform.position.y));
 			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
 			Vector3 vel = currentBullet.GetComponent<Rigidbody2D>().velocity;
-            timeToTravel = (Mathf.Sqrt(Mathf.Pow(distToTravel.x, 2) + Mathf.Pow(distToTravel.y, 2)) / Mathf.Sqrt(Mathf.Pow(vel.x, 2) + Mathf.Pow(vel.y, 2)));
-            IEnumerator coroutine = BulletMovement(timeToTravel, currentBullet);
-            StartCoroutine(coroutine);
-
-            // Face fireball to the direction it is traveling
-            // Left
-			/*
-            if (direction.x < 0) {
-				currentBullet.transform.Rotate(new Vector3(0f,0f, 180 - vel.y));			
-			}
-
-			// Right
-			else { 
-				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));
-			}
-			*/
+			timeToTravel = (Mathf.Sqrt(Mathf.Pow(distToTravel.x, 2) + Mathf.Pow(distToTravel.y, 2)) / Mathf.Sqrt(Mathf.Pow(vel.x, 2) + Mathf.Pow(vel.y, 2)));
+			IEnumerator coroutine = BulletMovement(timeToTravel, currentBullet);
+			StartCoroutine(coroutine);
 		}
+
+
 	}
 
     IEnumerator BulletMovement(float timeToTravel, GameObject movingBullet)

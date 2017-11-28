@@ -1015,11 +1015,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.19
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 84.9
+      value: 82.6
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -19390,11 +19390,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.2
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 84.1
+      value: 82.2
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -23541,11 +23541,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.34
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 83.84
+      value: 83.6
       objectReference: {fileID: 0}
     - target: {fileID: 4898541383049510, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -23702,8 +23702,9 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1136527857076554, guid: aaa2cd21210934f95b8f314623045238,
     type: 2}
   shootSound: {fileID: 8300000, guid: a1ad209ae17684f23b3abb376897695d, type: 3}
-  muted: 1
-  bulletVelocity: 60
+  velocities: []
+  chargeSpeed: 100
+  maxCharge: 1000
 --- !u!1 &2063294716
 GameObject:
   m_ObjectHideFlags: 0

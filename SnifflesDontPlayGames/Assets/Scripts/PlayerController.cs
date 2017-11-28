@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim; 
 	private int dirHash;
 
-	public bool muted = true;
+	private bool muted = false;
 	private FacingDir dirLeft;
 	private FacingDir dirRight;
 
@@ -33,33 +33,42 @@ public class PlayerController : MonoBehaviour {
 		currentDir = dirLeft;
 		dirHash = Animator.StringToHash("Dir");
 
-		SetAnimationDirection(currentDir);
+		SetAnimationDirection();
 		source = GetComponent<AudioSource>();
-
     }
 
-	void SetAnimationDirection(FacingDir d) {
-		anim.SetInteger(dirHash, d.GetInt());
+	void SetAnimationDirection() {
+		anim.SetInteger(dirHash, currentDir.GetInt());
 	}
 
-
-	void FixedUpdate () {
-		if (!canMove)
-			return;
-
+	void HandleMovement() {
 		float horiz = Input.GetAxis("Horizontal");
 		float vert = Input.GetAxis("Vertical");
-        Vector3 targetVelocity = new Vector3(horiz, vert);
-		
+		Vector3 targetVelocity = new Vector3(horiz, vert);
 
-        GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
+
+		GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
 		if (horiz < 0) {
-			SetAnimationDirection(dirLeft);
-		} else {
-			SetAnimationDirection(dirRight);
-		}
+			anim.enabled = true;
+			currentDir = dirLeft;
+			SetAnimationDirection();
+		} else if (horiz > 0) {
+			anim.enabled = true;
 
-		// Check for win
+			currentDir = dirRight;
+			SetAnimationDirection();
+		} else { 
+			// Not moving. Eventually display idle animation. For now, disable animation
+			anim.enabled = false;
+
+		}
+	}
+	void FixedUpdate () {
+		if (!canMove) return;
+
+		HandleMovement();
+
+		// Check for win. Should be when waves end or never
 		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 &&
 			GameObject.FindGameObjectsWithTag("Stealer").Length == 0) {
 			// Commenting this out for dev purposes
@@ -70,14 +79,12 @@ public class PlayerController : MonoBehaviour {
 
 	void StopActivity() {
 		canMove = false;
-		ShootController sc = GetComponent<ShootController>();
+		muted = true;
+		ShootController sc = GetComponentInChildren<ShootController>();
 		sc.DisableShooting();
 		EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
 		es.Disable();
 	}
-
-
-
 
 	// Called when something touches the player
 	void OnTriggerEnter2D(Collider2D collision) {

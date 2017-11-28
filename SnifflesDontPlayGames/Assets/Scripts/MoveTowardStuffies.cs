@@ -5,15 +5,19 @@ using UnityEngine;
 public class MoveTowardStuffies : MonoBehaviour {
 
     public float speed = 5f;
+
     private int hp = 1;
     private FacingDir currentDir;
     private Transform target; 
 	private GameObject player;
 
+	private Transform spawnDoor;
+
 	private Animator anim; 
 	private int dirHash;
 
-	bool isHolding = false;
+	private GameObject[] spawnDoors;
+	private bool isHolding = false;
 	private GameObject stuffyObj;
 
     void Start()
@@ -21,6 +25,8 @@ public class MoveTowardStuffies : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		dirHash = Animator.StringToHash("Dir");
 		player = GameObject.FindGameObjectWithTag("Player"); // needed for spawning explosition (bad for now)
+		spawnDoors = GameObject.FindGameObjectsWithTag("Door");
+		spawnDoor = (transform.position.x < 0) ? spawnDoors[0].transform : spawnDoors[1].transform;
 		UpdateTarget();
 		currentDir = new FacingDir();
         currentDir = GetDirectionToTarget();
@@ -69,8 +75,8 @@ public class MoveTowardStuffies : MonoBehaviour {
     }
 
 	void UpdateTarget() {
-		if (isHolding) { // If holding stuffy head towards the door
-			target = GameObject.FindGameObjectWithTag("Door").transform;
+		if (isHolding) { // If holding stuffy head towards the door it was spawned in (that was set in start())
+			target = spawnDoor;
 			return;
 		} else { 
 			// if not holding stuffy, head towards ground stuffies as a first priority
@@ -106,7 +112,7 @@ public class MoveTowardStuffies : MonoBehaviour {
             // Remove bullet
             collision.gameObject.SetActive(false);
             // Spawn explosition
-            ShootController sc = player.GetComponent<ShootController>();
+            ShootController sc = player.GetComponentInChildren<ShootController>();
             sc.SpawnExplosion(gameObject.transform.position);
             hp--;
 			if (hp <= 0) {

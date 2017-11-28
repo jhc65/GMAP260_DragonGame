@@ -39,9 +39,22 @@ public class ShootController : MonoBehaviour {
 		source = GetComponent<AudioSource>();
 	}
 
+	void UpdateMouthPosition() {
+		FacingDir dragonDirection = transform.parent.GetComponent<PlayerController>().GetPlayerDirection();
+		if (dragonDirection.Equals(Dirs.right))
+			transform.localPosition = new Vector3(13, 10, -1);
+		else if (dragonDirection.Equals(Dirs.left))
+			transform.localPosition = new Vector3(-14, 10, -1);
+		
+	}
 	// Update is called once per frame
 	void Update () {
+		
+
 		if (!canShoot) return;
+
+		UpdateMouthPosition();
+
 		// Fire on click
 		if (Input.GetMouseButtonDown(0)) {
 
@@ -68,14 +81,15 @@ public class ShootController : MonoBehaviour {
 			direction.Normalize();
 
 			// Choose where to spawn fire from (left side of mouth or right)
+			/*
 			if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.right)) {
 				bulletSpawnOffsetX = 1 * Mathf.Abs(bulletSpawnOffsetX);
 			}
 			else if (GetComponent<PlayerController>().GetPlayerDirection().Equals(Dirs.left)) {
 				bulletSpawnOffsetX = -1 * Mathf.Abs(bulletSpawnOffsetX);
 			}
-
-			currentBullet.transform.position = new Vector3(transform.position.x + bulletSpawnOffsetX, transform.position.y + bulletSpawnOffsetY, transform.position.z);
+			*/
+			currentBullet.transform.position = transform.position;
             distToTravel = new Vector2((cursorInWorldPos.x - currentBullet.transform.position.x), (cursorInWorldPos.y - currentBullet.transform.position.y));
 			currentBullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
 			Vector3 vel = currentBullet.GetComponent<Rigidbody2D>().velocity;
@@ -85,6 +99,7 @@ public class ShootController : MonoBehaviour {
 
             // Face fireball to the direction it is traveling
             // Left
+			/*
             if (direction.x < 0) {
 				currentBullet.transform.Rotate(new Vector3(0f,0f, 180 - vel.y));			
 			}
@@ -93,6 +108,7 @@ public class ShootController : MonoBehaviour {
 			else { 
 				currentBullet.transform.Rotate(new Vector3(0f,0f, vel.y));
 			}
+			*/
 		}
 	}
 

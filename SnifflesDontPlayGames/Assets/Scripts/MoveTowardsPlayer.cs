@@ -78,7 +78,7 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			// Remove bullet
 			collision.gameObject.SetActive(false);
 			// Spawn explosition
-			ShootController sc = target.gameObject.GetComponent<ShootController>();
+			ShootController sc = target.gameObject.GetComponentInChildren<ShootController>();
 			sc.SpawnExplosion(gameObject.transform.position);
 			hp--;
 			if (hp <= 0)

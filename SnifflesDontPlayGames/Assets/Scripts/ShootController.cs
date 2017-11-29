@@ -6,7 +6,6 @@ public class ShootController : MonoBehaviour {
 
 	public GameObject bulletPrefab;
 	public GameObject explosionPrefab;
-	public AudioClip shootSound;
 	public float[] velocities;
 	public int chargeSpeed = 100;
 	public int maxCharge = 1000;
@@ -22,7 +21,8 @@ public class ShootController : MonoBehaviour {
 	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
 	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center (defaulted to facing left)
 
-	private AudioSource source;
+	public AudioClip fireballSound;
+	private AudioSource audio;
 
 	private bool canShoot = true;
 	private float chargeLevel = 0f;
@@ -37,7 +37,7 @@ public class ShootController : MonoBehaviour {
 		}
 		nextBullet = 0;
 
-		source = GetComponent<AudioSource>();
+		audio = GetComponent<AudioSource>();
 	}
 
 	void UpdateMouthPosition() {
@@ -70,7 +70,7 @@ public class ShootController : MonoBehaviour {
 			}
 			chargeLevel += Time.deltaTime * chargeSpeed;
 			chargeLevel = (chargeLevel > maxCharge - 1 ? maxCharge : chargeLevel);
-			print(chargeLevel);
+			//print(chargeLevel);
 
 		}
 		// Release mouse and fire
@@ -79,9 +79,12 @@ public class ShootController : MonoBehaviour {
 			float bulletVelocity = GetCurrentVelocityFromChargeLevel();
 			if (bulletVelocity < minimumFiringVelocity) return;
 
-			Debug.Log(bulletVelocity);
+			//Debug.Log(bulletVelocity);
 			chargeLevel = 0;
 			currentBullet.SetActive(true);
+
+			//PlaySound (fireballSound, transform.position);
+			CustomAudio.PlaySound(fireballSound, transform.position);
 
 
 			// Shoot bullet in direction of cursor is
@@ -137,4 +140,5 @@ public class ShootController : MonoBehaviour {
 	public void EnableShooting() {
 		canShoot = true;
 	}
+
 }

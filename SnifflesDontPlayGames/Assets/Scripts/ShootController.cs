@@ -56,7 +56,8 @@ public class ShootController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!canShoot) return;
+		if (!canShoot)
+			return;
 
 		UpdateMouthPosition();
 
@@ -70,16 +71,14 @@ public class ShootController : MonoBehaviour {
 			}
 			chargeLevel += Time.deltaTime * chargeSpeed;
 			chargeLevel = (chargeLevel > maxCharge - 1 ? maxCharge : chargeLevel);
-			print(chargeLevel);
-
 		}
 		// Release mouse and fire
 		if (Input.GetMouseButtonUp(0))
 		{
 			float bulletVelocity = GetCurrentVelocityFromChargeLevel();
-			if (bulletVelocity < minimumFiringVelocity) return;
+			if (bulletVelocity < minimumFiringVelocity)
+				return;
 
-			Debug.Log(bulletVelocity);
 			chargeLevel = 0;
 			currentBullet.SetActive(true);
 
@@ -109,11 +108,13 @@ public class ShootController : MonoBehaviour {
 
         if (movingBullet.activeSelf) {
             movingBullet.SetActive(false);
-            SpawnExplosion(movingBullet.transform.position);
+            SpawnExplosion(movingBullet.transform.position, 0);
         }
     }
 
-    public void SpawnExplosion(Vector3 atPos) {
+	// Spawn an explosion at a position
+	// shrinkSize parameter to shrink local size of explosion (0 for none)
+	public void SpawnExplosion(Vector3 atPos, float shrinkSize) {
 		/*
 		GameObject explosion = explosions[nextExplosion++];
 		if (nextExplosion >= explosions.Length) {
@@ -125,9 +126,10 @@ public class ShootController : MonoBehaviour {
 		GameObject explosion = GameObject.Instantiate(explosionPrefab);
 		explosion.SetActive(true);
 		explosion.transform.position = atPos;
+		explosion.transform.localScale -= new Vector3(shrinkSize, shrinkSize, shrinkSize);
 
-		// Destroy this after animation is complete and small delay
-		Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.1f); 
+		// Destroy this after animation is complete
+		Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length); 
 	}
 
 	public void DisableShooting() {

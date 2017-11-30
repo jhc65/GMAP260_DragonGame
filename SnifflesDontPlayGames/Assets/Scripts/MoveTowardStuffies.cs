@@ -113,7 +113,7 @@ public class MoveTowardStuffies : MonoBehaviour {
             collision.gameObject.SetActive(false);
             // Spawn explosition
             ShootController sc = player.GetComponentInChildren<ShootController>();
-            sc.SpawnExplosion(gameObject.transform.position);
+            sc.SpawnExplosion(gameObject.transform.position, 0 );
             hp--;
 			if (hp <= 0) {
 				// Drop stuffy if any (detach from parent enemy)

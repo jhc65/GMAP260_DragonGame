@@ -5,6 +5,9 @@ using UnityEngine;
 public class MoveTowardsPlayer : MonoBehaviour {
 
 	public float speed = 5f;
+	public float fireBallSlowDown = 20f;
+	public float fireBallShrinkFactor = .1f;
+
 	private int hp = 1;
 	private FacingDir currentDir;
 	private Transform target; // This is set to private since making it public would require prefabbing the player...and then the text...this is just easier for now
@@ -75,11 +78,23 @@ public class MoveTowardsPlayer : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.CompareTag("Projectile")) {
 
-			// Remove bullet
-			collision.gameObject.SetActive(false);
-			// Spawn explosition
+			Vector2 projectileVelocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+			Vector2 oppositeForce = -projectileVelocity;
+
+			if (projectileVelocity.magnitude < fireBallSlowDown)
+				print("slower");
+				//collision.gameObject.SetActive(false);
+			else { 			
+
+				// Slow and shrink the projectile
+				collision.gameObject.GetComponent<Rigidbody2D>().AddForce(oppositeForce * fireBallSlowDown);
+				collision.gameObject.transform.localScale -= new Vector3(fireBallShrinkFactor, fireBallShrinkFactor, fireBallShrinkFactor);
+
+			}
+
+			// Spawn explosition at collision point
 			ShootController sc = target.gameObject.GetComponentInChildren<ShootController>();
-			sc.SpawnExplosion(gameObject.transform.position);
+			sc.SpawnExplosion(gameObject.transform.position, 0);
 			hp--;
 			if (hp <= 0)
 				Destroy(gameObject);

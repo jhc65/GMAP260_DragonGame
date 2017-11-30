@@ -302,7 +302,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4848590174988646, guid: cf25b14ea3f59473bb0115a10f581a8d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 189
+      value: 194.6
       objectReference: {fileID: 0}
     - target: {fileID: 4848590174988646, guid: cf25b14ea3f59473bb0115a10f581a8d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -505,7 +505,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4848590174988646, guid: cf25b14ea3f59473bb0115a10f581a8d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -123
+      value: -126.4
       objectReference: {fileID: 0}
     - target: {fileID: 4848590174988646, guid: cf25b14ea3f59473bb0115a10f581a8d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6285,6 +6285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  fireBallSlowDown: 20
+  fireBallShrinkFactor: 0.1
 --- !u!95 &1009521065
 Animator:
   serializedVersion: 3
@@ -6457,8 +6459,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012335541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 82.7, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.6, y: 82.45, z: -0}
+  m_LocalScale: {x: 1.6619858, y: 1.4923273, z: 1}
   m_Children: []
   m_Father: {fileID: 565247862}
   m_RootOrder: 3
@@ -14721,6 +14723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  fireBallSlowDown: 20
+  fireBallShrinkFactor: 0.1
 --- !u!95 &1535204980
 Animator:
   serializedVersion: 3
@@ -15408,6 +15412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  fireBallSlowDown: 20
+  fireBallShrinkFactor: 0.1
 --- !u!95 &1658387869
 Animator:
   serializedVersion: 3
@@ -19138,7 +19144,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1840712614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 51.4, z: -1}
+  m_LocalPosition: {x: 21.7, y: 72.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2060856041}
@@ -19208,48 +19214,64 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 10, y: -7.85}
-      - {x: 11.95, y: -6.1}
-      - {x: 11.400001, y: -2.1000001}
-      - {x: 9.6, y: -0.35}
+    - - {x: 7.489155, y: -20.404226}
+      - {x: 8.891965, y: -23.987318}
+      - {x: 11.279768, y: -23.986265}
+      - {x: 14.796616, y: -24.343256}
+      - {x: 17.199944, y: -21.165071}
+      - {x: 15.807366, y: -8.26796}
+      - {x: 7.5196066, y: -4.6108437}
+      - {x: 7.5456715, y: -0.34999847}
       - {x: 8.650001, y: 1.5}
       - {x: 9.45, y: 4}
       - {x: 9.35, y: 2.25}
       - {x: 10.45, y: 1.15}
       - {x: 11.45, y: 1.1}
       - {x: 12.35, y: 2.65}
-      - {x: 12.35, y: 5}
+      - {x: 15.089102, y: 0.20656586}
       - {x: 12.3, y: 5.2000003}
       - {x: 9.55, y: 7.8}
       - {x: 7.75, y: 7.8}
       - {x: 7.65, y: 7.7000003}
       - {x: 6.8, y: 7}
       - {x: 6.9, y: 8.650001}
-      - {x: 6.9, y: 10.45}
-      - {x: 6, y: 11.45}
-      - {x: -0.55, y: 11.45}
+      - {x: 10.095621, y: 7.939152}
+      - {x: 9.863194, y: 10.786217}
+      - {x: 13.908812, y: 9.341766}
+      - {x: 15.130348, y: 10.536972}
+      - {x: 4.220908, y: 21.98912}
+      - {x: 2.985234, y: 19.482605}
+      - {x: -4.202142, y: 21.265121}
       - {x: -1.5, y: 10.650001}
       - {x: -2.15, y: 7.3}
       - {x: -2.2, y: 9.8}
       - {x: -3.15, y: 9.650001}
       - {x: -4.2000003, y: 8.8}
-      - {x: -5.9, y: 7.8}
-      - {x: -6.9, y: 7}
-      - {x: -7.8, y: 6.1}
+      - {x: -6.12826, y: 17.843384}
+      - {x: -12.378206, y: 15.673828}
+      - {x: -16.245567, y: 8.610844}
       - {x: -8.7, y: 3.15}
-      - {x: -8.7, y: 0.45000002}
+      - {x: -13.949946, y: -1.6043282}
       - {x: -8.6, y: 0.35}
       - {x: -5.9, y: 0.25}
       - {x: -5.75, y: 1.15}
       - {x: -5.05, y: -0.25}
       - {x: -6.1, y: -1.3000001}
-      - {x: -6.9, y: -3.2}
+      - {x: -13.062983, y: -1.8304482}
       - {x: -6.9, y: -5.9}
       - {x: -6.8, y: -6}
-      - {x: -4.35, y: -10.55}
-      - {x: 6.05, y: -10.55}
+      - {x: -11.585274, y: -7.044468}
+      - {x: -13.371771, y: -16.470284}
+      - {x: -15.762938, y: -21.27816}
+      - {x: -9.1459255, y: -23.631891}
+      - {x: -4.2411547, y: -23.676563}
+      - {x: -1.5296955, y: -21.412632}
+      - {x: 1.3260607, y: -15.378254}
+      - {x: -0.012554646, y: -22.163837}
+      - {x: 4.9087076, y: -21.96293}
+      - {x: 7.5564017, y: -16.552418}
       - {x: 6.9, y: -8.85}
-      - {x: 8.6, y: -8.7}
+      - {x: 8.37174, y: -16.232536}
       - {x: 8.7, y: -8.6}
     - - {x: 4.25, y: 1.2}
       - {x: 4.85, y: 1.2}
@@ -23647,6 +23669,41 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.00755
       objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 60732642946955178, guid: d49526490c7f7d7499fe83b613d14c9e,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 33127477608874342, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
     - {fileID: 23782007760020360, guid: d49526490c7f7d7499fe83b613d14c9e, type: 2}
@@ -23705,6 +23762,7 @@ MonoBehaviour:
   velocities: []
   chargeSpeed: 100
   maxCharge: 1000
+  minimumFiringVelocity: 20
 --- !u!1 &2063294716
 GameObject:
   m_ObjectHideFlags: 0

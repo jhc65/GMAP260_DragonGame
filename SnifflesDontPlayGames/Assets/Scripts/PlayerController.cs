@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
 	private bool muted = false;
 	private FacingDir dirLeft;
 	private FacingDir dirRight;
+	private FacingDir dirUp;
+	private FacingDir dirDown;
 
 	void Start () {
 		anim = GetComponent<Animator>();
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour {
         playerhealthUI.text = hp.ToString();
 		dirLeft = new FacingDir("left");
 		dirRight = new FacingDir("right");
+		dirUp = new FacingDir("up");
+		dirDown = new FacingDir("down");
+
 		currentDir = dirLeft;
 		dirHash = Animator.StringToHash("Dir");
 
@@ -54,8 +59,15 @@ public class PlayerController : MonoBehaviour {
 			SetAnimationDirection();
 		} else if (horiz > 0) {
 			anim.enabled = true;
-
 			currentDir = dirRight;
+			SetAnimationDirection();
+		} else if (vert < 0) {
+			anim.enabled = true;
+			currentDir = dirDown;
+			SetAnimationDirection();
+		} else if (vert > 0 ) {
+			anim.enabled = true;
+			currentDir = dirUp;
 			SetAnimationDirection();
 		} else { 
 			// Not moving. Eventually display idle animation. For now, disable animation

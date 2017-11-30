@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -23758,11 +23758,11 @@ MonoBehaviour:
     type: 2}
   explosionPrefab: {fileID: 1136527857076554, guid: aaa2cd21210934f95b8f314623045238,
     type: 2}
-  shootSound: {fileID: 8300000, guid: a1ad209ae17684f23b3abb376897695d, type: 3}
   velocities: []
   chargeSpeed: 100
   maxCharge: 1000
   minimumFiringVelocity: 20
+  fireballSound: {fileID: 8300000, guid: be1d4227a409d4bbc8d3d11ec83c0829, type: 3}
 --- !u!1 &2063294716
 GameObject:
   m_ObjectHideFlags: 0

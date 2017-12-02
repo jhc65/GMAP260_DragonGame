@@ -81,14 +81,14 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			Vector2 projectileVelocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
 			Vector2 oppositeForce = -projectileVelocity;
 
-			if (projectileVelocity.magnitude < fireBallSlowDown)
-				print("slower");
-				//collision.gameObject.SetActive(false);
+			if (projectileVelocity.magnitude < fireBallSlowDown) {
+				collision.gameObject.SetActive(false);
+			}
 			else { 			
 
 				// Slow and shrink the projectile
 				collision.gameObject.GetComponent<Rigidbody2D>().AddForce(oppositeForce * fireBallSlowDown);
-				collision.gameObject.transform.localScale -= new Vector3(fireBallShrinkFactor, fireBallShrinkFactor, fireBallShrinkFactor);
+				//collision.gameObject.transform.localScale -= new Vector3(0, fireBallShrinkFactor, fireBallShrinkFactor);
 
 			}
 

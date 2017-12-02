@@ -37,10 +37,12 @@ public class Stuffy : MonoBehaviour {
 	}
 
 	public void ReturnStuffy() {
+		r.enabled = false;
 		transform.position = position; //return to original position
 		transform.parent = pile;
 		gameObject.tag = "Stuffy";
-		r.enabled = false;
+		r.enabled = false; // duplicate to bandaid fix stuffy renderer not working on first try above idk
+		transform.position = new Vector3(transform.position.x, transform.position.y, -1); // hide behind pile
 
 	}
 

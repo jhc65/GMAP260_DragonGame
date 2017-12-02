@@ -18,8 +18,16 @@ public class ShootController : MonoBehaviour {
 	private int nextExplosion;
 
 	private GameObject currentBullet;
-	private float bulletSpawnOffsetX = -16f; // Dragon mouth X offset from center (defaulted to facing left)
-	private float bulletSpawnOffsetY = 2f; // Dragon mouth Y offset from center (defaulted to facing left)
+
+	// Left/right mouth position
+	private float bulletSpawnOffsetXRight = 16f; // Dragon mouth X offset from center (defaulted to facing left)
+	private float bulletSpawnOffsetXLeft = -16f; // Dragon mouth X offset from center (defaulted to facing right)
+	private float bulletSpawnOffsetYHoriz = 10f; // Dragon mouth Y offset from center (defaulted to facing left)
+
+	// Up/down mouth position
+	private float bulletSpawnOffsetXVert = 0f;
+	private float bulletSpawnOffsetYDown = 2f;
+	private float bulletSpawnOffsetYUp = 18f;
 
 	public AudioClip fireballSound;
 	private AudioSource audio;
@@ -40,12 +48,18 @@ public class ShootController : MonoBehaviour {
 		audio = GetComponent<AudioSource>();
 	}
 
+	// Update the shot spawn (mouth) position depending on dragon direction so fireballs come out of mouth
 	void UpdateMouthPosition() {
 		FacingDir dragonDirection = transform.parent.GetComponent<PlayerController>().GetPlayerDirection();
 		if (dragonDirection.Equals(Dirs.right))
-			transform.localPosition = new Vector3(13, 10, -1);
+			transform.localPosition = new Vector3(bulletSpawnOffsetXRight, bulletSpawnOffsetYHoriz, -1);
 		else if (dragonDirection.Equals(Dirs.left))
-			transform.localPosition = new Vector3(-14, 10, -1);
+			transform.localPosition = new Vector3(bulletSpawnOffsetXLeft, bulletSpawnOffsetYHoriz, -1);
+		else if (dragonDirection.Equals(Dirs.up))
+			transform.localPosition = new Vector3(bulletSpawnOffsetXVert, bulletSpawnOffsetYUp, -1);
+		else if (dragonDirection.Equals(Dirs.down))
+			transform.localPosition = new Vector3(bulletSpawnOffsetXVert, bulletSpawnOffsetYDown, -1);
+		
 	}
 
 	// convert charge level to velocity

@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public float playerSpeed = 4f;
-    private int maxHealth = 9999;
-	private int hp = 9999;
+	public float hp = 10;
+	public float maxHP = 10;
 	private bool canMove = true;
 	private FacingDir currentDir;
 
     public GameObject gameOverText;
 	public GameObject victoryText;
-    public Text playerhealthUI;
+    public Text playerhealthTextUI; // for debugging
+	public Image playerHealthBarUI;
 
 	private AudioSource source;
 	public AudioClip injurySound;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator>();
 
-        playerhealthUI.text = hp.ToString();
+		playerhealthTextUI.text = hp.ToString();
 		dirLeft = new FacingDir("left");
 		dirRight = new FacingDir("right");
 		dirUp = new FacingDir("up");
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour {
 			currentDir = dirUp;
 			SetAnimationDirection();
 		} else { 
-			// Not moving. Eventually display idle animation. For now, disable animation
+			// Not moving. Disable animation
 			anim.enabled = false;
 
 		}
@@ -80,13 +81,8 @@ public class PlayerController : MonoBehaviour {
 
 		HandleMovement();
 
-		// Check for win. Should be when waves end or never
-		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 &&
-			GameObject.FindGameObjectsWithTag("Stealer").Length == 0) {
-			// Commenting this out for dev purposes
-			// victoryText.GetComponent<Text>().enabled = true;
-			// StopActivity();
-		}
+		// Check for win?
+
     }
 
 	void StopActivity() {
@@ -109,7 +105,8 @@ public class PlayerController : MonoBehaviour {
 				source.Play();
 
 			hp--;
-            playerhealthUI.text = hp.ToString();
+			playerhealthTextUI.text = hp.ToString();
+			playerHealthBarUI.fillAmount = hp / maxHP;
 			if (hp <= 0) { 
 				GameOver();
 			}
@@ -126,10 +123,10 @@ public class PlayerController : MonoBehaviour {
         return (float)hp;
     }
 
-    public void ChangePlayerHealth(int newHealthIn)
+    public void ChangePlayerHealth(float newHealthIn)
     {
-        playerhealthUI.text = newHealthIn.ToString();
-        maxHealth = newHealthIn;
+		playerhealthTextUI.text = newHealthIn.ToString();
+		maxHP = newHealthIn;
         hp = newHealthIn;
     }
 

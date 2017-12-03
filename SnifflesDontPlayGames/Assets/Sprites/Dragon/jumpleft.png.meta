@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: f697aa9c87123432694d42d2665798db
+timeCreated: 1512335102
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: jumpleft_0
+    21300002: jumpleft_1
+    21300004: jumpleft_2
+    21300006: jumpleft_3
+    21300008: jumpleft_4
+    21300010: jumpleft_5
+    21300012: jumpleft_6
+    21300014: jumpleft_7
+    21300016: jumpleft_8
+    21300018: jumpleft_9
+    21300020: jumpleft_10
+    21300022: jumpleft_11
+    21300024: jumpleft_12
+    21300026: jumpleft_13
+    21300028: jumpleft_14
+    21300030: jumpleft_15
+    21300032: jumpleft_16
+    21300034: jumpleft_17
+    21300036: jumpleft_18
+    21300038: jumpleft_19
+    21300040: jumpleft_20
+    21300042: jumpleft_21
+    21300044: jumpleft_22
+    21300046: jumpleft_23
+    21300048: jumpleft_24
+    21300050: jumpleft_25
+    21300052: jumpleft_26
+    21300054: jumpleft_27
+    21300056: jumpleft_28
+    21300058: jumpleft_29
+    21300060: jumpleft_30
+    21300062: jumpleft_31
+    21300064: jumpleft_32
+    21300066: jumpleft_33
+    21300068: jumpleft_34
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jumpleft_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 2417
+        width: 298
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_1
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 2417
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_2
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 2417
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_3
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 2417
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_4
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 2421
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_5
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 2417
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_6
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1936
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_7
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1936
+        width: 292
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_8
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1936
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_9
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1948
+        width: 291
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_10
+      rect:
+        serializedVersion: 2
+        x: 1906
+        y: 1963
+        width: 310
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_11
+      rect:
+        serializedVersion: 2
+        x: 2362
+        y: 1985
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_12
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1504
+        width: 336
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_13
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1514
+        width: 318
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_14
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1517
+        width: 334
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_15
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 1522
+        width: 329
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_16
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 1522
+        width: 334
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_17
+      rect:
+        serializedVersion: 2
+        x: 2356
+        y: 1522
+        width: 334
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_18
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1043
+        width: 343
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_19
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1043
+        width: 328
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_20
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1036
+        width: 327
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_21
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 1030
+        width: 321
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_22
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1024
+        width: 320
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_23
+      rect:
+        serializedVersion: 2
+        x: 2362
+        y: 1019
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_24
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 520
+        width: 310
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_25
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 514
+        width: 296
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_26
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 496
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_27
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 496
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_28
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 496
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_29
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 496
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_30
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 16
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_31
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 16
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_32
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 16
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_33
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 16
+        width: 296
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpleft_34
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 16
+        width: 298
+        height: 429
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: ee456b7942f464cf5b602b4453d6b5e7
+timeCreated: 1512334936
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: jumpright_0
+    21300002: jumpright_1
+    21300004: jumpright_2
+    21300006: jumpright_3
+    21300008: jumpright_4
+    21300010: jumpright_5
+    21300012: jumpright_6
+    21300014: jumpright_7
+    21300016: jumpright_8
+    21300018: jumpright_9
+    21300020: jumpright_10
+    21300022: jumpright_11
+    21300024: jumpright_12
+    21300026: jumpright_13
+    21300028: jumpright_14
+    21300030: jumpright_15
+    21300032: jumpright_16
+    21300034: jumpright_17
+    21300036: jumpright_18
+    21300038: jumpright_19
+    21300040: jumpright_20
+    21300042: jumpright_21
+    21300044: jumpright_22
+    21300046: jumpright_23
+    21300048: jumpright_24
+    21300050: jumpright_25
+    21300052: jumpright_26
+    21300054: jumpright_27
+    21300056: jumpright_28
+    21300058: jumpright_29
+    21300060: jumpright_30
+    21300062: jumpright_31
+    21300064: jumpright_32
+    21300066: jumpright_33
+    21300068: jumpright_34
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jumpright_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 2417
+        width: 296
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_1
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 2417
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_2
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 2417
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_3
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 2417
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_4
+      rect:
+        serializedVersion: 2
+        x: 1930
+        y: 2417
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_5
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 2417
+        width: 272
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_6
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1936
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_7
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1936
+        width: 291
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_8
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 1936
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_9
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1948
+        width: 292
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_10
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 1967
+        width: 309
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_11
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 1985
+        width: 320
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1504
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_13
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 1514
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_14
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1517
+        width: 328
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_15
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1522
+        width: 327
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_16
+      rect:
+        serializedVersion: 2
+        x: 1930
+        y: 1522
+        width: 334
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_17
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 1522
+        width: 334
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1043
+        width: 334
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_19
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1043
+        width: 327
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_20
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1036
+        width: 328
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_21
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 1030
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_22
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 1024
+        width: 322
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_23
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 1019
+        width: 320
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_24
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 520
+        width: 309
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_25
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 514
+        width: 298
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_26
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 496
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_27
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 496
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_28
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 496
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_29
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 496
+        width: 272
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_30
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 16
+        width: 273
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_31
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 16
+        width: 274
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_32
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 16
+        width: 285
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_33
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 16
+        width: 298
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jumpright_34
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 16
+        width: 296
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

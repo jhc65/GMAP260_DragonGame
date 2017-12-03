@@ -6,22 +6,29 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public float playerSpeed = 4f;
-	public float hp = 10;
-	public float maxHP = 10;
+	public float hp = 19;
+	public float maxHP = 19;
+	public int knightDamageReceieved = 2;
 	private bool canMove = true;
-	private FacingDir currentDir;
+	private bool isDead = false;
 
+	// GUI
     public GameObject gameOverText;
 	public GameObject victoryText;
     public Text playerhealthTextUI; // for debugging
-	public Image playerHealthBarUI;
+	public Sprite[] healthBarImages;
+	public SpriteRenderer healthBar;
 
+	// Audio
 	private AudioSource source;
 	public AudioClip injurySound;
+
+	// Animation
+	private FacingDir currentDir;
 	private Animator anim; 
 	private int dirHash;
+	private int deadHash;
 
-	private bool muted = false;
 	private FacingDir dirLeft;
 	private FacingDir dirRight;
 	private FacingDir dirUp;
@@ -38,13 +45,17 @@ public class PlayerController : MonoBehaviour {
 
 		currentDir = dirLeft;
 		dirHash = Animator.StringToHash("Dir");
-
+		deadHash = Animator.StringToHash("isDead");
 		SetAnimationDirection();
 		source = GetComponent<AudioSource>();
     }
 
 	void SetAnimationDirection() {
 		anim.SetInteger(dirHash, currentDir.GetInt());
+	}
+
+	void TriggerDeathAnimation() {
+		anim.SetBool(deadHash, true);
 	}
 
 	void HandleMovement() {
@@ -80,18 +91,26 @@ public class PlayerController : MonoBehaviour {
 		if (!canMove) return;
 
 		HandleMovement();
-
-		// Check for win?
-
     }
 
 	void StopActivity() {
 		canMove = false;
-		muted = true;
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		ShootController sc = GetComponentInChildren<ShootController>();
 		sc.DisableShooting();
 		EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
 		es.Disable();
+
+		// Remove all enemies
+		foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+			enemy.SetActive(false);
+		}
+		foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Stealer")) {
+			enemy.SetActive(false);
+		}
+
+		TriggerDeathAnimation(); // show losing animation
+
 	}
 
 	// Called when something touches the player
@@ -101,42 +120,54 @@ public class PlayerController : MonoBehaviour {
 			//play injury sound
 			float vol = 1.0f;
 			//source.PlayOneShot(injurySound, vol);
-			if (!muted) 
-				source.Play();
+			source.Play();
 
-			hp--;
-			playerhealthTextUI.text = hp.ToString();
-			playerHealthBarUI.fillAmount = hp / maxHP;
-			if (hp <= 0) { 
-				GameOver();
-			}
+			ApplyDamage(knightDamageReceieved);
+
 		}
 	}
 
+	public void ApplyDamage(int dmg) {
+		hp -= dmg;
+		if (hp <= 0) { 
+			healthBar.sprite = healthBarImages[healthBarImages.Length - 1];
+			isDead = true;
+			GameOver();
+			return;
+		}
+
+		// Update health bar sprite to appropriate damage level
+		if (hp > 1)
+			healthBar.sprite = healthBarImages[(int) maxHP - (int) hp];
+		playerhealthTextUI.text = hp.ToString();
+
+	}
 	public void GameOver() {
 		gameOverText.GetComponent<Text>().enabled = true;
+		if (isDead) {
+			gameOverText.GetComponent<Text>().text = "You Died";
+		}
+		else {
+			gameOverText.GetComponent<Text>().text = "Stuffies Lost";
+		}
 		StopActivity();
 	}
 
-    public float GetPlayerHealth()
-    {
+    public float GetPlayerHealth() {
         return (float)hp;
     }
 
-    public void ChangePlayerHealth(float newHealthIn)
-    {
+    public void ChangePlayerHealth(float newHealthIn) {
 		playerhealthTextUI.text = newHealthIn.ToString();
 		maxHP = newHealthIn;
         hp = newHealthIn;
     }
 
-    public float GetPlayerMovementSpeed()
-    {
+    public float GetPlayerMovementSpeed() {
         return playerSpeed;
     }
 
-    public void ChangePlayerMovementSpeed(float newMoveSpeedIn)
-    {
+    public void ChangePlayerMovementSpeed(float newMoveSpeedIn) {
         playerSpeed = newMoveSpeedIn;
     }
 

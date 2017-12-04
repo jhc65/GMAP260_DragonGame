@@ -74,6 +74,9 @@ public class MoveTowardsPlayer : MonoBehaviour {
 		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 		SetAnimationDirection(GetDirectionToTarget());
 	}
+	public void Die() {
+		Destroy(gameObject);
+	}
 
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.CompareTag("Projectile")) {
@@ -86,7 +89,7 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			}
 			else { 			
 
-				// Slow and shrink the projectile
+				// Slow the projectile
 				collision.gameObject.GetComponent<Rigidbody2D>().AddForce(oppositeForce * fireBallSlowDown);
 				//collision.gameObject.transform.localScale -= new Vector3(0, fireBallShrinkFactor, fireBallShrinkFactor);
 
@@ -96,13 +99,15 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			ShootController sc = target.gameObject.GetComponentInChildren<ShootController>();
 			sc.SpawnExplosion(gameObject.transform.position, 0);
 			hp--;
-			if (hp <= 0)
-				Destroy(gameObject);
+			if (hp <= 0) {
+				Die();
+			}
 		}
         else if (collision.gameObject.CompareTag("Explosion")) {
+			print("ouch");
             hp--;
             if (hp <= 0) {
-                Destroy(gameObject);
+				Die();
             }
         }
 	}

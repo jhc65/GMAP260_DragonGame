@@ -104,29 +104,33 @@ public class MoveTowardStuffies : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 		SetAnimationDirection(GetDirectionToTarget());
     }
+	public void Die() {
+		// Drop stuffy if any (detach from parent enemy)
+		transform.DetachChildren();
+		Destroy(gameObject);
+	}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Projectile")) {
+		if (collision.gameObject.CompareTag("Projectile")) {
 
             // Remove bullet
             collision.gameObject.SetActive(false);
+
+
             // Spawn explosition
             ShootController sc = player.GetComponentInChildren<ShootController>();
             sc.SpawnExplosion(gameObject.transform.position, 0 );
             hp--;
 			if (hp <= 0) {
-				// Drop stuffy if any (detach from parent enemy)
-				transform.DetachChildren();
-                Destroy(gameObject);
+				Die();
+
 			}
         }
         else if (collision.gameObject.CompareTag("Explosion")) {
             hp--;
             if (hp <= 0) {
-                // Drop stuffy if any (detach from parent enemy)
-                transform.DetachChildren();
-                Destroy(gameObject);
+				Die();
             }
         }
     }

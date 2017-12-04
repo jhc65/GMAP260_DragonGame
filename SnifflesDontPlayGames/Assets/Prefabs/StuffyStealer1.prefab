@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 60253618189869626}
   - component: {fileID: 114037477814136664}
   - component: {fileID: 50482885231147600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StuffyStealer1
   m_TagString: Stealer
   m_Icon: {fileID: 0}
@@ -137,9 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  spawnDoors:
-  - {fileID: 4402327170621428, guid: 3a4c13c6d17614aea811f1a362282eee, type: 2}
-  - {fileID: 4402327170621428, guid: b1465dfe04602446b9c2b99bef83806a, type: 2}
 --- !u!212 &212145434519171144
 SpriteRenderer:
   m_ObjectHideFlags: 1

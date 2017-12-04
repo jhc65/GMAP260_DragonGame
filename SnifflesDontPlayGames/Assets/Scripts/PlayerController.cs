@@ -5,7 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-    public float playerSpeed = 4f;
+	// Explosion to spawn after landing jump
+	public GameObject AoE;
+
+	// Movement
+    public float playerMoveSpeed = 4f;
+	public float playerJumpSpeed = 8f;
+
+	// Health
 	public float hp = 19;
 	public float maxHP = 19;
 	public int knightDamageReceieved = 2;
@@ -28,11 +35,14 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim; 
 	private int dirHash;
 	private int deadHash;
+	private int jumpHash;
 
 	private FacingDir dirLeft;
 	private FacingDir dirRight;
 	private FacingDir dirUp;
 	private FacingDir dirDown;
+
+	private GameObject AoEToRemove;
 
 	void Start () {
 		anim = GetComponent<Animator>();
@@ -46,6 +56,7 @@ public class PlayerController : MonoBehaviour {
 		currentDir = dirLeft;
 		dirHash = Animator.StringToHash("Dir");
 		deadHash = Animator.StringToHash("isDead");
+		jumpHash = Animator.StringToHash("ChargeDir");
 		SetAnimationDirection();
 		source = GetComponent<AudioSource>();
     }
@@ -58,44 +69,60 @@ public class PlayerController : MonoBehaviour {
 		anim.SetBool(deadHash, true);
 	}
 
+	// Start jumping (see Dragon animation controller scripts)
+	void TriggerJump() {
+		anim.SetInteger(jumpHash, currentDir.GetInt());
+	}
+
+	void CheckForJump() {
+
+		// Jump
+		if (Input.GetKeyDown("space") && currentDir == dirLeft) {
+			anim.enabled = true;
+			DisableMovement();
+			TriggerJump();
+		}
+	}
+
 	void HandleMovement() {
+		if (!canMove)
+			return;
+		
 		float horiz = Input.GetAxis("Horizontal");
 		float vert = Input.GetAxis("Vertical");
 		Vector3 targetVelocity = new Vector3(horiz, vert);
 
+		GetComponent<Rigidbody2D>().velocity = targetVelocity * playerMoveSpeed;
 
-		GetComponent<Rigidbody2D>().velocity = targetVelocity * playerSpeed;
-		if (horiz < 0) {
-			anim.enabled = true;
-			currentDir = dirLeft;
-			SetAnimationDirection();
-		} else if (horiz > 0) {
-			anim.enabled = true;
-			currentDir = dirRight;
-			SetAnimationDirection();
-		} else if (vert < 0) {
-			anim.enabled = true;
-			currentDir = dirDown;
-			SetAnimationDirection();
-		} else if (vert > 0 ) {
-			anim.enabled = true;
-			currentDir = dirUp;
-			SetAnimationDirection();
-		} else { 
-			// Not moving. Disable animation
+		if (horiz == 0 && vert == 0) {
 			anim.enabled = false;
-
+			CheckForJump();
+			return;
 		}
+		CheckForJump();
+
+		// Face appropriate direction
+		anim.enabled = true;
+
+		Vector2 vel = GetComponent<Rigidbody2D>().velocity;
+		if (vel.x < 0) {
+			currentDir = dirLeft;
+		} else if (vel.x > 0) {
+			currentDir = dirRight;
+		} else if (vel.y < 0) {
+			currentDir = dirDown;
+		} else if (vel.y > 0 ) {
+			currentDir = dirUp;
+		}
+		SetAnimationDirection();
+
 	}
 	void FixedUpdate () {
-		if (!canMove) return;
-
 		HandleMovement();
     }
 
 	void StopActivity() {
-		canMove = false;
-		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		DisableMovement();
 		ShootController sc = GetComponentInChildren<ShootController>();
 		sc.DisableShooting();
 		EnemySpawner es = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>();
@@ -116,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 	// Called when something touches the player
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.CompareTag("Enemy")) {
-
+			
 			//play injury sound
 			float vol = 1.0f;
 			//source.PlayOneShot(injurySound, vol);
@@ -143,6 +170,7 @@ public class PlayerController : MonoBehaviour {
 
 	}
 	public void GameOver() {
+		StopActivity();
 		gameOverText.GetComponent<Text>().enabled = true;
 		if (isDead) {
 			gameOverText.GetComponent<Text>().text = "You Died";
@@ -150,7 +178,6 @@ public class PlayerController : MonoBehaviour {
 		else {
 			gameOverText.GetComponent<Text>().text = "Stuffies Lost";
 		}
-		StopActivity();
 	}
 
     public float GetPlayerHealth() {
@@ -164,11 +191,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     public float GetPlayerMovementSpeed() {
-        return playerSpeed;
+		return playerMoveSpeed;
     }
 
     public void ChangePlayerMovementSpeed(float newMoveSpeedIn) {
-        playerSpeed = newMoveSpeedIn;
+		playerMoveSpeed = newMoveSpeedIn;
     }
 
 	public FacingDir GetPlayerDirection() {
@@ -179,4 +206,23 @@ public class PlayerController : MonoBehaviour {
 		currentDir = dir;
 	}
 
+	public void DisableMovement() {
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		canMove = false;
+	}
+		
+	public void EnableMovement() {
+		canMove = true;
+	}
+
+	public void SpawnExplosion() {
+		GameObject aoe = GameObject.Instantiate(AoE);
+		aoe.transform.position = gameObject.transform.position;
+		aoe.GetComponent<AoE>().TriggerExplosionDamage(40);
+		AoEToRemove = aoe; // save to later remove the aoe effect
+	}
+
+	public void RemoveExplosion() {
+		Destroy(AoEToRemove);
+	}
 }

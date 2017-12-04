@@ -25,6 +25,7 @@ public class OnLand : StateMachineBehaviour {
 		animator.SetInteger("JumpDir", -1);
 		animator.GetComponent<PlayerController>().EnableMovement();
 		animator.GetComponent<PlayerController>().RemoveExplosion();
+		animator.GetComponentInChildren<ShootController>().EnableShooting();
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

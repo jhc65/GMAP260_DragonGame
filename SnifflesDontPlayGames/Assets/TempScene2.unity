@@ -19308,7 +19308,7 @@ MonoBehaviour:
   playerJumpSpeed: 8
   hp: 19
   maxHP: 19
-  knightDamageReceieved: 0
+  knightDamageReceieved: 5
   gameOverText: {fileID: 2134919054}
   victoryText: {fileID: 1928954772}
   playerhealthTextUI: {fileID: 1009686718}

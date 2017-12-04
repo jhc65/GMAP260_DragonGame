@@ -119,8 +119,33 @@ public class PlayerController : MonoBehaviour {
 		SetAnimationDirection();
 
 	}
+
+	void CheckBounds() {
+		// Left wall
+		if (transform.position.x <= -128.8f) {
+			transform.position = new Vector3(-128.8f, transform.position.y, transform.position.z);
+		}
+
+		// Right wall
+		if (transform.position.x >= 128.8f) {
+			transform.position = new Vector3(128.8f, transform.position.y, transform.position.z);
+		}
+
+		// Top wall
+		if (transform.position.y >= 94.76f) {
+			transform.position = new Vector3(transform.position.x, 94.76f, transform.position.z);
+		}
+
+		// Bottom wall
+		if (transform.position.y <= -66.22205f) {
+			transform.position = new Vector3(transform.position.x, -66.22205f, transform.position.z);
+		}
+	}
 	void FixedUpdate () {
+		CheckBounds();
+
 		HandleMovement();
+
     }
 
 	void StopActivity() {

@@ -44,10 +44,11 @@ public class PlayerController : MonoBehaviour {
 
 	private GameObject AoEToRemove;
 	private bool isTouchingWall;
+	private bool invincible;
 
 	void Start () {
 		anim = GetComponent<Animator>();
-
+		invincible = false;
 		playerhealthTextUI.text = hp.ToString();
 		dirLeft = new FacingDir("left");
 		dirRight = new FacingDir("right");
@@ -149,8 +150,8 @@ public class PlayerController : MonoBehaviour {
 			float vol = 1.0f;
 			//source.PlayOneShot(injurySound, vol);
 			source.Play();
-
-			ApplyDamage(knightDamageReceieved);
+			if (!invincible)
+				ApplyDamage(knightDamageReceieved);
 
 		}
 
@@ -227,5 +228,9 @@ public class PlayerController : MonoBehaviour {
 
 	public void RemoveExplosion() {
 		Destroy(AoEToRemove);
+	}
+
+	public void SetInvincible(bool isInvincible) {
+		invincible = isInvincible;
 	}
 }

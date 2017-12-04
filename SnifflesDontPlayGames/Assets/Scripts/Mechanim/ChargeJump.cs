@@ -11,13 +11,13 @@ public class ChargeJump : StateMachineBehaviour {
 	 //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.GetComponentInChildren<ShootController>().DisableShooting();
+		power = 0;
 	}
 
 	void ReleaseJump(Animator animator) {
 		
 		// If no direction is specified after (maxPower) seconds, just jump in facing direction
 		if (power >= maxPower) {
-		//	Debug.Log("Jumping with " + power);
 			animator.SetFloat("JumpPower", power);
 			animator.SetInteger("JumpDir", animator.GetInteger("Dir"));
 			return;
@@ -29,14 +29,12 @@ public class ChargeJump : StateMachineBehaviour {
 
 		// Left requested
 		if (horiz < 0) {
-		//	Debug.Log("Jumping with " + power);
 			animator.SetFloat("JumpPower", power);
 			animator.SetInteger("JumpDir", 0);
 		}
 
 		// Right requested
 		else if (horiz > 0) {
-		//	Debug.Log("Jumping with " + power);
 			animator.SetFloat("JumpPower", power);
 			animator.SetInteger("JumpDir", 1);
 		}

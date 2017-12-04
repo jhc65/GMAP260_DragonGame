@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Jump : StateMachineBehaviour {
 
-	public float jumpSpeed = 20f;
+	public float jumpSpeed = 25f;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.GetComponent<PlayerController>().SetInvincible(true);
-		animator.GetComponent<Rigidbody2D>().velocity = new Vector2(-animator.GetFloat("JumpPower") * jumpSpeed, 0);
+
+		// Jump velocity. For now a function of time held charged * speed constant
+		float jumpVelocity = animator.GetFloat("JumpPower") * jumpSpeed;
+
+		// Jump to the left
+		if (animator.GetInteger("JumpDir") == 0)
+			jumpVelocity *= -1;
 		
+		animator.GetComponent<Rigidbody2D>().velocity = new Vector2(jumpVelocity, 0);
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

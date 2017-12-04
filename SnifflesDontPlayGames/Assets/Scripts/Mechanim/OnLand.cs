@@ -23,6 +23,7 @@ public class OnLand : StateMachineBehaviour {
 		// Reset movement and animator states
 		animator.SetInteger("ChargeDir", -1);
 		animator.SetInteger("JumpDir", -1);
+		animator.SetFloat("JumpPower", 0.0f);
 		animator.GetComponent<PlayerController>().EnableMovement();
 		animator.GetComponent<PlayerController>().RemoveExplosion();
 		animator.GetComponentInChildren<ShootController>().EnableShooting();

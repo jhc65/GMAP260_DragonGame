@@ -78,8 +78,8 @@ public class PlayerController : MonoBehaviour {
 
 	void CheckForJump() {
 
-		// Jump
-		if (Input.GetKeyDown("space") && currentDir == dirLeft) {
+		// Jump (only left and right for now)
+		if (Input.GetKeyDown("space") && (currentDir == dirLeft || currentDir == dirRight)) {
 			anim.enabled = true;
 			DisableMovement();
 			TriggerJump();

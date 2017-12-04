@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 	private FacingDir dirDown;
 
 	private GameObject AoEToRemove;
+	private bool isTouchingWall;
 
 	void Start () {
 		anim = GetComponent<Animator>();
@@ -152,6 +153,8 @@ public class PlayerController : MonoBehaviour {
 			ApplyDamage(knightDamageReceieved);
 
 		}
+
+
 	}
 
 	public void ApplyDamage(int dmg) {

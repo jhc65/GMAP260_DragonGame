@@ -28,15 +28,6 @@ public class AoE : MonoBehaviour {
 			} else if (col.CompareTag("Stealer")) {
 				col.GetComponent<MoveTowardStuffies>().Die();
 			}
-			// Check if it has a rigidbody
-			/*
-			Rigidbody2D rb = en.GetComponent<Rigidbody2D>();
-			if(rb != null && rb.CompareTag("Enemy")) {
-				rb.GetComponent<MoveTowardsPlayer>().Die();
-			} else if (rb != null && rb.CompareTag("Stealer")) {
-				rb.GetComponent<MoveTowardStuffies>().Die();
-			}
-			*/
 		}
 	}
 

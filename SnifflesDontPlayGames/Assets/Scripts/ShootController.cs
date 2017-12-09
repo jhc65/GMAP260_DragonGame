@@ -97,8 +97,8 @@ public class ShootController : MonoBehaviour {
 			currentBullet.SetActive(true);
 
 			//PlaySound (fireballSound, transform.position);
-			CustomAudio.PlaySound(fireballSound, transform.position);
-
+			//CustomAudio.PlaySound(fireballSound, transform.position);
+			audio.Play();
 
 			// Shoot bullet in direction of cursor is
 			Vector2 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

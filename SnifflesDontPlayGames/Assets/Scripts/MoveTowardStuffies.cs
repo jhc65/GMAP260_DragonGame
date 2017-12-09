@@ -20,6 +20,9 @@ public class MoveTowardStuffies : MonoBehaviour {
 	private bool isHolding = false;
 	private GameObject stuffyObj;
 
+	private AudioSource audio;
+	private bool holdingStuffy = false;
+
     void Start()
     {
 		anim = GetComponent<Animator>();
@@ -31,6 +34,8 @@ public class MoveTowardStuffies : MonoBehaviour {
 		currentDir = new FacingDir();
         currentDir = GetDirectionToTarget();
 		SetAnimationDirection(currentDir);
+
+		audio = GetComponent<AudioSource> ();
     }
 
 	void SetAnimationDirection(FacingDir d) {
@@ -157,6 +162,7 @@ public class MoveTowardStuffies : MonoBehaviour {
 
 	public void SetIsHoldingItem(bool holding) {
 		isHolding = holding;
+		audio.Play ();
 		UpdateTarget();
 
 	}

@@ -9,6 +9,7 @@ public class ShootController : MonoBehaviour {
 	public float[] velocities;
 	public int chargeSpeed = 100;
 	public int maxCharge = 1000;
+	public float bulletVelocity = 1.05f;
 	public float minimumFiringVelocity = 20f;
 	private static int numBullets = 30;
 	private GameObject[] bullets = new GameObject[numBullets];
@@ -64,7 +65,7 @@ public class ShootController : MonoBehaviour {
 
 	// convert charge level to velocity
 	float GetCurrentVelocityFromChargeLevel() {
-		return chargeLevel;
+		return chargeLevel * bulletVelocity;
 	}
 
 

@@ -207,6 +207,8 @@ public class PlayerController : MonoBehaviour {
 		else {
 			gameOverText.GetComponent<Text>().text = "Stuffies Lost";
 		}
+		GameController gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		gc.StopScoring();
 	}
 
     public float GetPlayerHealth() {

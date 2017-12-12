@@ -99,6 +99,8 @@ public class MoveTowardsPlayer : MonoBehaviour {
 			ShootController sc = target.gameObject.GetComponentInChildren<ShootController>();
 			sc.SpawnExplosion(gameObject.transform.position, 0);
 			hp--;
+			GameController gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+			gc.IncrementScoreByAmount(1000);
 			if (hp <= 0) {
 				Die();
 			}
